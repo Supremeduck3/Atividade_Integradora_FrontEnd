@@ -32,7 +32,7 @@ function App() {
                     Sign in
                 </a>
             </header>
-            
+
             <section className="title-section">
                 <img src="/img/icones.png" alt="icones decorativos" />
 
@@ -69,7 +69,7 @@ function App() {
                 <div className="footer-content">
                     <div className="footer-left">
                         <h3>Bookly</h3>
-                        <p>© 2024 Bookly Education. All rights reserved.</p>
+                        <p>© 2026 Bookly Education. All rights reserved.</p>
                         <p>Tornando o conhecimento acessível para todos.</p>
                     </div>
 
