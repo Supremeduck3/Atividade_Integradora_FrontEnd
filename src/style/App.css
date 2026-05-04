@@ -39,9 +39,10 @@ body {
 }
 
 .grid {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 30px;
-    padding: 20px;
 }
 
 .card{
