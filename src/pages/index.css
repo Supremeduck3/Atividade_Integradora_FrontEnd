@@ -1,10 +1,10 @@
 * {
-    margin:0;
-    padding:0;
-    box-sizing:boder-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html, body{
+html, body {
     width: 100%;
     height: 100%;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
@@ -16,12 +16,10 @@ html, body{
     min-height: 100vh;
 }
 
-
 a {
     text-decoration: none;
     color: inherit;
 }
-
 
 img {
     max-width: 100%;
@@ -30,6 +28,6 @@ img {
 
 button {
     border: none;
-    cursor:pointer;
+    cursor: pointer;
     font-family: inherit;
 }
