@@ -6,8 +6,10 @@ export default function Header(){
                 <h1 className={style.logo}>Bookly</h1>
 
                 <nav>
-                    <a href="#">Home</a>
-                    <a href="#">Developers</a>
+                    <a href="#">Início</a>
+                    <a href="#">Equipe</a>
+                    <a href="#">Simulado</a>
+                    <a href="#">Video Aulas</a>
                     <a href="#">Sobre</a>
                 </nav>
 
