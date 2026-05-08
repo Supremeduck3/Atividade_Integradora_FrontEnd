@@ -1,0 +1,44 @@
+.cointainer{
+    width: 100%;
+    margin-right: 100vh;
+    background-color: #f5f5f5;
+}
+
+.hero {
+     width: 100%;
+     padding: 60px 20px;
+     text-align: center;
+}
+
+.hero img {
+    width: 100vh;
+    max-width: 1000px;
+    margin-bottom: 30px;
+}
+
+.hero h1 {
+    font-size: 60px;
+    color: #222;
+    line-height: 1.2;
+}
+
+.hero span {
+    color: #21c46b;
+}
+
+.hero p{
+    margin-top: 20px;
+    font-size: 20px;
+    color: #666;
+
+}
+
+.hero button {
+    margin-top: 30px;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 30px;
+    background-color: #ff6b00;
+    color: #fff;
+    
+}
