@@ -17,7 +17,7 @@ const livros = [
   {
     titulo: "Caminho de Pedras",
     autor: "Rachel de Queiroz",
-    capa: "/public/img/caminho.png"
+    capa: "/public/img/caminho_das_pedras.png"
   },
   {
     titulo: "Os Ratos",
