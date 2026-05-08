@@ -1,4 +1,6 @@
 import "../style/App.css";
+import Footer from "../components/footer";
+import Header from "../components/header";
 
 const membros = [
     { nome: 'Maria Eduarda Braga Ferreira', foto: '/img/maria.png' },
@@ -19,19 +21,7 @@ const membros = [
 function Home() {
     return (
         <div className="container">
-            <header className="header">
-                <h1 className="logo">Bookly</h1>
-
-                <nav>
-                    <a href="#">Home</a>
-                    <a href="#">Developers</a>
-                    <a href="#">Sobre</a>
-                </nav>
-
-                <a href="/login" className="signin-btn">
-                    Sign in
-                </a>
-            </header>
+            <Header/>
 
             <section className="title-section">
                 <img src="/img/icones.png" alt="icones decorativos" />
@@ -71,33 +61,7 @@ function Home() {
                     <p>Claudinei</p>
                 </div>
             </section>
-
-            <footer className="footer">
-                <div className="footer-content">
-
-                    <div className="footer-left">
-                        <h3>Bookly</h3>
-
-                        <p>© 2026 Bookly Education. All rights reserved.</p>
-
-                        <p>
-                            Tornando o conhecimento acessível para todos.
-                        </p>
-                    </div>
-
-                    <div className="footer-center">
-                        <a href="#">Termos de serviço</a>
-                        <a href="#">Contato</a>
-                        <a href="#">Sobre</a>
-                    </div>
-
-                    <div className="footer-right">
-                        <div className="dot"></div>
-                        <div className="dot"></div>
-                    </div>
-
-                </div>
-            </footer>
+            <Footer/>
         </div>
     );
 }
