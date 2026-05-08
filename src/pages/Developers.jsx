@@ -18,7 +18,7 @@ const membros = [
     { nome: 'Pedro Otávio Braga', foto: '/img/pedroo.png' },
 ];
 
-function Home() {
+function Developers() {
     return (
         <div className="container">
             <Header/>
@@ -66,4 +66,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default Developers;
