@@ -1,13 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100vh;
+}
+
 body {
     background-color: #f5f5f5;
     background-repeat: no-repeat;
     background-position: top center;
-    background-size: contain;
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .container {
-    max-width: 1100px;
-    margin: 0 auto;
+    width: 100%;
+    min-height: 100vh;
     text-align: center;
 }
 
@@ -18,10 +31,11 @@ body {
 
     background: white;
     padding: 15px 30px;
-    border-radius: 12px;
-    margin: 20px;
 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    width: 100%;
+    margin: 0;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .logo {
@@ -40,6 +54,7 @@ body {
 .header nav a {
     color: #333;
     font-size: 14px;
+    text-decoration: none;
 }
 
 .signin-btn {
@@ -50,6 +65,7 @@ body {
     border-radius: 999px;
     font-size: 14px;
     transition: 0.3s;
+    text-decoration: none;
 }
 
 .signin-btn:hover {
@@ -59,29 +75,52 @@ body {
 .title-section {
     margin: 40px 0;
     position: relative;
+    width: 100%;
+    overflow: hidden;
 }
 
 .title-section h2 {
     font-size: 34px;
     font-weight: bold;
     line-height: 1.2;
+
+    position: relative;
+    z-index: 1;
 }
 
 .title-section p {
     color: #666;
     margin-top: 10px;
+
+    position: relative;
+    z-index: 1;
 }
 
 .title-section img {
     position: absolute;
-    top: -50px;
-    left: 0;
-    width: 100%;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 11000px;
+    max-width: 100%;
+
+    opacity: 0.8;
     pointer-events: none;
+
+    z-index: 0;
 }
 
 .verde {
     color: #22c55e;
+}
+
+.azul {
+    color: #3b82f6;
+}
+
+.laranja {
+    color: #ff5a00;
 }
 
 .grid {
@@ -89,13 +128,22 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 30px;
-    max-width: 900px;
+
+    width: 100%;
     margin: 70px auto 0;
+
+    position: relative;
+    z-index: 2;
 }
 
 .card {
     width: 120px;
     text-align: center;
+}
+
+.card p {
+    font-size: 14px;
+    color: #333;
 }
 
 .avatar {
@@ -111,6 +159,7 @@ body {
     display: flex;
     justify-content: center;
     gap: 100px;
+    flex-wrap: wrap;
 }
 
 .mascote img {
@@ -118,30 +167,25 @@ body {
     margin: 0 auto;
 }
 
-.azul {
-    color: #3b82f6;
-}
-
-.laranja {
-    color: #ff5a00;
-}
-
 .footer {
     background-color: #eee;
     padding: 30px 20px;
     margin-top: 60px;
-    align-items: center;
+
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .footer-content {
-    max-width: 1100px;
-    margin: 0 auto;
+    width: 100%;
+    padding: 0 40px;
+
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    gap: 20vh;
-    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .footer-left h3 {
@@ -157,19 +201,18 @@ body {
 .footer-center {
     display: flex;
     gap: 15px;
-    display: flex;
     align-items: center;
 }
 
 .footer-center a {
     font-size: 15px;
     color: #666;
+    text-decoration: none;
 }
 
 .footer-right {
     display: flex;
     gap: 10px;
-
 }
 
 .dot {
@@ -178,36 +221,28 @@ body {
     background: #ccc;
     border-radius: 50%;
 }
-.title-section img {
-    position: absolute;
-    top: -20px;
-    left: 0;
-    width: 100%;
-    pointer-events: none;
-    display: flex;
-}
- 
-.login-page {
 
+.login-page {
     min-height: 100vh;
     background-color: #f5f5f5;
+
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .login-card {
     width: 380px;
-    background-color: #f5f5f5;
+    background-color: white;
     padding: 40px;
     border-radius: 25px;
-    box-shadow: 0 8px 25px redgba(0,0,0,0.10);
-    text-align: center;
 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
+
+    text-align: center;
 }
 
-.login-card h1{
+.login-card h1 {
     color: #ff5a00;
     font-size: 42px;
     margin-bottom: 10px;
@@ -233,26 +268,31 @@ body {
 .login-inputs input {
     padding: 14px;
     width: 100%;
+
     border-radius: 12px;
     border: 1px solid #ddd;
+
     font-size: 15px;
     outline: none;
-    box-sizing: border-box ;
 }
 
 .login-inputs button {
     width: 100%;
     background-color: #ff5a00;
     color: #fff;
+
     border: none;
     padding: 14px;
+
     border-radius: 999px;
     font-size: 16px;
     font-weight: bold;
+
     cursor: pointer;
     transition: 0.3s;
 }
-.login-card button:hover {
+
+.login-inputs button:hover {
     background-color: #e14e00;
 }
 
@@ -263,10 +303,38 @@ body {
     font-size: 14px;
 }
 
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    text-align: center;
+@media (max-width: 768px) {
+
+    .header {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .logo,
+    .signin-btn {
+        justify-self: center;
+    }
+
+    .header nav {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .title-section h2 {
+        font-size: 26px;
+    }
+
+    .title-section img {
+        width: 180px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .mascotes {
+        gap: 40px;
+    }
 }
-
-
