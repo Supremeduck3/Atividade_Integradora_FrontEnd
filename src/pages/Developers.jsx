@@ -1,6 +1,6 @@
 import "../style/App.css";
 import Footer from "../components/footer";
-import Header from "../components/header";
+import Header from "../components/header/header";
 
 const membros = [
     { nome: 'Maria Eduarda Braga Ferreira', foto: '/img/maria.png' },

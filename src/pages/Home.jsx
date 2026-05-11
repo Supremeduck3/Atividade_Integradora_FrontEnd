@@ -1,6 +1,6 @@
 import styles from "../style/home.module.css";
 
-import Header from "../components/header";
+import Header from "../components/header/header";
 import Footer from "../components/footer";
 
 const livros = [
