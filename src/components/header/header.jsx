@@ -9,6 +9,7 @@ export default function Header() {
     async function carregarDados() {
       try {
         const api = await fetch("/api/exemplos/1");
+        if(!api.ok) return;
         const json = await api.json(); // Adicionado o await aqui!
         // 3. Salvamos no estado em vez de manipular o DOM direto
         setDados(json);
@@ -41,13 +42,26 @@ export default function Header() {
         >
           Devs
         </NavLink>
-      </nav>
-      <NavLink
+
+        
+        <NavLink
+          to="/personagens"
+          className={({ isActive }) => 
+            isActive ? styles["pagina_ativa"] : styles
+            ["pagina_desativa"]
+          }
+         >
+         Personagens 
+        </NavLink>
+
+          
+        <NavLink
         to="/login"
         className={logado ? styles["logado"] : styles["naoLogado"]}
       >
         Sing in
       </NavLink>
+      </nav>
     </header>
   );
 }
