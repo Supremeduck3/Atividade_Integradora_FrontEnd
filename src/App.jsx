@@ -4,6 +4,7 @@ import Login from "./pages/login";
 import Developers from "./pages/Developers";
 import PaginaPersonagens from "./pages/PaginaPersonagens";
 import DetalhePersonagem from "./pages/DetalhePersonagem";
+import NotFound from './components/erroFound/notFound'
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Route path="/personagem/:id" element={<DetalhePersonagem />} />
         <Route path="/dev" element={<Developers />} />
         <Route path="/login" element={<Login />} />
-        <Route path="*" element={<div>Página não encontrada</div>} />
+        <Route path="*" element={<NotFound />}/>
       </Routes>
     </BrowserRouter>
   );

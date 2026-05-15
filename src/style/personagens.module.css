@@ -1,38 +1,38 @@
-.pagina-completa {
+.pagina_completa {
     background-color: #fff;
     min-height: 100vh;
     font-family: sans-serif;
 }
 
-.conteudo-personagens, 
-.conteudo-detalhe {
+.conteudo_personagens,
+.conteudo_detalhe {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
-.banner-personagens {
+.banner_personagens {
     text-align: center;
     padding: 40px 20px;
 }
 
-.titulo-obra h2 {
+.titulo_obra h2 {
     font-size: 2.2rem;
     margin: 0;
     color: #333;
 }
 
-.destaque-laranja {
+.destaque_laranja {
     color: #ff5a00 !important;
 }
 
-.formas-decorativas {
+.formas_decorativas {
     width: 100%;
     max-width: 550px;
     margin: 25px 0;
 }
 
-.banner-personagens h1 {
+.banner_personagens h1 {
     font-size: 2.5rem;
     color: #000;
     font-weight: 600;
@@ -71,10 +71,10 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top; 
+    object-position: top;
 }
 
-.foto_container img.foto-ajustada {
+.foto_container img.foto_ajustada {
     object-position: top center;
     transform: scale(1.05);
 }
@@ -107,7 +107,7 @@
     overflow: hidden;
 }
 
-.btn-ler-sobre {
+.btn_ler_sobre {
     background-color: #c95d5d;
     color: white !important;
     border: none;
@@ -121,20 +121,20 @@
     justify-content: center;
     gap: 10px;
     text-decoration: none;
-    transition: background 0.3s;
+    transition: 0.3s;
 }
 
-.btn-ler-sobre:hover {
+.btn_ler_sobre:hover {
     background-color: #a84a4a;
 }
 
 
-.conteudo-detalhe {
+.conteudo_detalhe {
     margin-top: 50px;
     padding-bottom: 80px;
 }
 
-.btn-voltar {
+.btn_voltar {
     text-decoration: none;
     color: #ff5a00;
     font-weight: bold;
@@ -143,17 +143,17 @@
     transition: 0.3s;
 }
 
-.btn-voltar:hover {
+.btn_voltar:hover {
     text-decoration: underline;
 }
 
-.layout-detalhe {
+.layout_detalhe {
     display: flex;
     gap: 50px;
     align-items: flex-start;
 }
 
-.detalhe-foto {
+.detalhe_foto {
     flex: 1;
     max-width: 400px;
     border-radius: 30px;
@@ -161,17 +161,17 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-.detalhe-foto img {
+.detalhe_foto img {
     width: 100%;
     display: block;
     object-fit: cover;
 }
 
-.detalhe-info {
+.detalhe_info {
     flex: 1.5;
 }
 
-.detalhe-info span, .obra-tag {
+.detalhe_info span, .obra_tag {
     color: #ff5a00;
     font-weight: bold;
     text-transform: uppercase;
@@ -180,20 +180,20 @@
     margin-bottom: 10px;
 }
 
-.detalhe-info h1 {
+.detalhe_info h1 {
     font-size: 3.5rem;
     margin-bottom: 25px;
     color: #1a1a1a;
     line-height: 1.1;
 }
 
-.texto-detalhado {
+.texto_detalhado {
     font-size: 1.15rem;
     line-height: 1.8;
     color: #444;
 }
 
-.conteudo-erro {
+.conteudo_erro {
     text-align: center;
     padding: 100px 20px;
 }
@@ -202,19 +202,19 @@
     .grid_personagens {
         grid-template-columns: repeat(3, 1fr);
     }
-    .detalhe-info h1 { font-size: 2.8rem; }
+    .detalhe_info h1 { font-size: 2.8rem; }
 }
 
 @media (max-width: 850px) {
     .grid_personagens {
         grid-template-columns: repeat(2, 1fr);
     }
-    .layout-detalhe {
+    .layout_detalhe {
         flex-direction: column;
         align-items: center;
         text-align: center;
     }
-    .detalhe-foto {
+    .detalhe_foto {
         max-width: 100%;
         margin-bottom: 30px;
     }
@@ -224,5 +224,5 @@
     .grid_personagens {
         grid-template-columns: 1fr;
     }
-    .detalhe-info h1 { font-size: 2.2rem; }
+    .detalhe_info h1 { font-size: 2.2rem; }
 }
