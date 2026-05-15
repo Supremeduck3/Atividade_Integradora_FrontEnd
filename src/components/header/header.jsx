@@ -43,18 +43,18 @@ export default function Header() {
           Devs
         </NavLink>
 
-        
+
         <NavLink
           to="/personagens"
-          className={({ isActive }) => 
+          className={({ isActive }) =>
             isActive ? styles["pagina_ativa"] : styles
             ["pagina_desativa"]
           }
          >
-         Personagens 
+         Personagens
         </NavLink>
 
-          
+
         <NavLink
         to="/login"
         className={logado ? styles["logado"] : styles["naoLogado"]}

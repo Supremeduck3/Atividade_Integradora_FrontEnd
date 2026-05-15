@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import Header from '../components/header/header';
-import Footer from '../components/footer'; 
+import Footer from '../components/footer';
 import '../style/personagens.css';
 
 function PaginaPersonagens() {
@@ -19,9 +19,9 @@ function PaginaPersonagens() {
  return (
     <div className="pagina-completa">
       <Header />
-      
+
       <main className="conteudo-personagens">
-        
+
         <div className="banner-personagens">
           <img src="/img/icones.png" alt="Decorativo" className="formas-decorativas" />
           <div className="titulo-obra">
@@ -35,18 +35,18 @@ function PaginaPersonagens() {
           {personagens.map((p, index) => (
             <div key={index} className="card_personagem">
               <div className="foto_container">
-                <img 
-                   src={p.capa} 
-                   alt={p.nome} 
-                   className={(p.nome === "Pérola Maria" || p.nome === "Irene") ? "foto-ajustada" : ""} 
+                <img
+                   src={p.capa}
+                   alt={p.nome}
+                   className={(p.nome === "Pérola Maria" || p.nome === "Irene") ? "foto-ajustada" : ""}
                 />
               </div>
               <div className="info_personagem">
                 <h3>{p.nome}</h3>
                 <p>{p.resumo}</p>
-                
-                <Link 
-                  to={`/personagem/${p.nome}`} 
+
+                <Link
+                  to={`/personagem/${p.nome}`}
                   className="btn-ler-sobre"
                 >
                   Ler Sobre <span className="seta">→</span>
@@ -61,3 +61,5 @@ function PaginaPersonagens() {
     </div>
   );
 }
+
+export default PaginaPersonagens;
