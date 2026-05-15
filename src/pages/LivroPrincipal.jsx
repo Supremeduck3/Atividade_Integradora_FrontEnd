@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Header from "../components/header/header";
-import Footer from "../components/footer";
-import styles from "../style/home.module.css";
+import Footer from "./../components/footer/footer"
+import styles from "../style/personagens.module.css";
 
 function LivroPrincipal() {
   const [dados, setDados] = useState(null);
