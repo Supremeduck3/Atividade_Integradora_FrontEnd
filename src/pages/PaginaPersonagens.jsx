@@ -1,20 +1,53 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/header/header';
-import Footer from '../components/footer';
-import '../style/personagens.css';
+import Footer from '../components/footer/footer';
+import styles from './../style/personagens.module.css'
+
 
 function PaginaPersonagens() {
-  const [personagens] = useState([
-    { nome: "Pérola Maria", resumo: "É a personificação da perda devastadora. Ela é a mulher que não aceita o amor em migalhas...", capa: "/img/PerolaMaria.png" },
-    { nome: "Fio Jasmin", resumo: "É a personificação da fuga e do encanto. Ele habita o corpo de um homem vigoroso...", capa: "/img/FioJasmin.png" },
-    { nome: "Juventina", resumo: "É a personificação do porvir seguro e da solidão compartilhada. Ela ocupa o lugar...", capa: "/img/Juventina.png" },
-    { nome: "Arabela", resumo: "É a personificação da brevidade e do consolo. Ela representa as paradas temporárias...", capa: "/img/Arabela.png" },
-    { nome: "Irene", resumo: "Irene é a personificação da espera. Ela sabe das traições, sabe dos furos...", capa: "/img/Irene.png" },
-    { nome: "Aurora", resumo: "É a personificação da nostalgia e do tempo que não volta. Ela representa o entardecer...", capa: "/img/Aurora.png" },
-    { nome: "Mágda", resumo: "É a personificação da nostalgia e do tempo que não volta. Ela representa o entardecer...", capa: "/img/Magda.png" },
-    { nome: "Maria Nova", resumo: "É a personificação da nostalgia e do tempo que não volta. Ela representa o entardecer...", capa: "/img/MariaNova.png" },
-  ]);
+    const [personagens] = useState([
+        {
+            nome: 'Pérola Maria',
+            resumo: 'É a personificação da perda devastadora. Ela é a mulher que não aceita o amor em migalhas...',
+            capa: '/img/PerolaMaria.png',
+        },
+        {
+            nome: 'Fio Jasmin',
+            resumo: 'É a personificação da fuga e do encanto. Ele habita o corpo de um homem vigoroso...',
+            capa: '/img/FioJasmin.png',
+        },
+        {
+            nome: 'Juventina',
+            resumo: 'É a personificação do porvir seguro e da solidão compartilhada. Ela ocupa o lugar...',
+            capa: '/img/Juventina.png',
+        },
+        {
+            nome: 'Arabela',
+            resumo: 'É a personificação da brevidade e do consolo. Ela representa as paradas temporárias...',
+            capa: '/img/Arabela.png',
+        },
+        {
+            nome: 'Irene',
+            resumo: 'Irene é a personificação da espera. Ela sabe das traições, sabe dos furos...',
+            capa: '/img/Irene.png',
+        },
+        {
+            nome: 'Aurora',
+            resumo: 'É a personificação da nostalgia e do tempo que não volta. Ela representa o entardecer...',
+            capa: '/img/Aurora.png',
+        },
+        {
+            nome: 'Mágda',
+            resumo: 'É a personificação da nostalgia e do tempo que não volta. Ela representa o entardecer...',
+            capa: '/img/Magda.png',
+        },
+        {
+            nome: 'Maria Nova',
+            resumo: 'É a personificação da nostalgia e do tempo que não volta. Ela representa o entardecer...',
+            capa: '/img/MariaNova.png',
+        },
+    ]);
 
  return (
     <div className="pagina-completa">
