@@ -1,45 +1,67 @@
-import "../style/App.css";
-import { useActionData, useNavigate } from "react-router-dom";
+import '../style/App.css';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
-    const navigate= useNavigate();
-    function handleLogin(){
-        alert("Conta criada com sucesso!");
+    const navigate = useNavigate();
 
-        navigate("/");
+    function handleLogin() {
+        alert('Login realizado com sucesso!');
+        navigate('/');
     }
 
     return (
-        <div className="login-page">
-            <div className="login-card">
-                <h1>Bookly</h1>
+        <div className="login-container">
+            <div className="login-left">
+                <div className="login-navbar">
+                    <nav>
+                        <Link to="/">Home</Link>
 
-                <h2>Entrar</h2>
-                <p>Acesse sua conta para continuar</p>
+                        <Link to="/dev">Developers</Link>
 
-                <div className="login-inputs">
-                  <input
-                  className="login-input"
-                  type="email"
-                  placeholder="Digite seu e-mail"
-                  />
+                        <Link to="/personagens">Personagens</Link>
 
-                  <input
-                  className="login-input"
-                  type="passaword"
-                  placeholder="Digite sua senha"
-                  />
-
-                  <button className="login-button" onClick={handleLogin}>
-                    Sign in
-                  </button>
+                        <Link to="/login">Login</Link>
+                    </nav>
                 </div>
-                 <span className="login-text">
-                    Ainda não tem conta? Cadastra-se!
-                 </span>
+
+                <div className="left-overlay">
+                    <p>MEU PAINEL</p>
+
+                    <h1>LOGIN BOOKLY</h1>
+                </div>
+            </div>
+
+            <div className="login-right">
+                <div className="login-card">
+                    <h1 className="bookly-logo">Bookly</h1>
+
+                    <h2>Entrar</h2>
+
+                    <p>Acesse a conta para continuar</p>
+
+                    <div className="login-inputs">
+                        <input
+                            className="login-input"
+                            type="email"
+                            placeholder='Digite seu email'
+                        />
+
+                        <input
+                            className="login-input"
+                            type="password"
+                            placeholder="Digite sua senha"
+                        />
+
+                        <button className='login-button' onClick={handleLogin}>
+                            Entrar
+                        </button>
+                    </div>
+
+                    <span className="login-text">Ainda não tem conta ? Cadastra-se</span>
+                </div>
             </div>
         </div>
-
     );
 }
- export default Login;
+
+export default Login;
