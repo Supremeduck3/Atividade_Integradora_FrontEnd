@@ -49,53 +49,50 @@ function PaginaPersonagens() {
         },
     ]);
 
-    return (
-        <div className={styles.pagina_completa}>
-            <Header />
+ return (
+    <div className="pagina-completa">
+      <Header />
 
-            <main className={styles.conteudo_personagens}>
-                <div className={styles.banner_personagens}>
-                    <img
-                        src="/img/icones.png"
-                        alt="Decorativo"
-                        className={styles.formas_decorativas}
-                    />
-                    <div className={styles.titulo_obra}>
-                        <h2>Canção Para Ninar</h2>
-                        <h2 className={styles.destaque_laranja}>Menino Grande</h2>
-                    </div>
-                    <h1>Personagens</h1>
-                </div>
+      <main className="conteudo-personagens">
 
-                <div className={styles.grid_personagens}>
-                    {personagens.map((p, index) => (
-                        <div key={index} className={styles.card_personagem}>
-                            <div className={styles.foto_container}>
-                                <img
-                                    src={p.capa}
-                                    alt={p.nome}
-                                    className={
-                                        p.nome === 'Pérola Maria' || p.nome === 'Irene'
-                                            ? 'foto-ajustada'
-                                            : ''
-                                    }
-                                />
-                            </div>
-                            <div className={styles.info_personagem}>
-                                <h3>{p.nome}</h3>
-                                <p>{p.resumo}</p>
-
-                                <Link to={`/personagem/${p.nome}`} className={styles.btn_ler_sobre}>
-                                    Ler Sobre <span className={styles.seta}>→</span>
-                                </Link>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </main>
-
-            <Footer />
+        <div className="banner-personagens">
+          <img src="/img/icones.png" alt="Decorativo" className="formas-decorativas" />
+          <div className="titulo-obra">
+            <h2>Canção Para Ninar</h2>
+            <h2 className="destaque-laranja">Menino Grande</h2>
+          </div>
+          <h1>Personagens</h1>
         </div>
-    );
+
+        <div className="grid_personagens">
+          {personagens.map((p, index) => (
+            <div key={index} className="card_personagem">
+              <div className="foto_container">
+                <img
+                   src={p.capa}
+                   alt={p.nome}
+                   className={(p.nome === "Pérola Maria" || p.nome === "Irene") ? "foto-ajustada" : ""}
+                />
+              </div>
+              <div className="info_personagem">
+                <h3>{p.nome}</h3>
+                <p>{p.resumo}</p>
+
+                <Link
+                  to={`/personagem/${p.nome}`}
+                  className="btn-ler-sobre"
+                >
+                  Ler Sobre <span className="seta">→</span>
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  );
 }
+
 export default PaginaPersonagens;
