@@ -52,9 +52,9 @@ function PaginaPersonagens() {
      <div className={style.pagina_completa}>
          <Header />
 
-         <main className={style.conteudo_personagens}>
-             <div className={style.banner_personagens}>
-                 <img src="/img/icones.png" alt="Decorativo" className={style.formas_decorativas} />
+         <main className="conteudo_personagens">
+             <div className="banner_personagens">
+                 <img src="/img/icones.png" alt="Decorativo" className="formas_decorativas" />
                  <div className="titulo-obra">
                      <h2>Canção Para Ninar</h2>
                      <h2 className="destaque_laranja">Menino Grande</h2>
