@@ -54,6 +54,3 @@ function DetalhePersonagem() {
 };
 
 export default DetalhePersonagem;
-
-
-
