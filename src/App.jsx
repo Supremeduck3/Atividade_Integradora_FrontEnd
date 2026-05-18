@@ -6,6 +6,7 @@ import PaginaPersonagens from './pages/PaginaPersonagens';
 import PaginaLivros from './pages/PaginaLivros';
 import DetalhePersonagem from './pages/DetalhePersonagem';
 import NotFound from './components/erroFound/notFound';
+import Questionarios from './pages/Questionarios';
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/dev" element={<Developers />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="*" element={<NotFound />} />
+                <Route path="/questionarios" element={<Questionarios />} />
             </Routes>
         </BrowserRouter>
     );
