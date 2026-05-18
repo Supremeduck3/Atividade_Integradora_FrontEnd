@@ -5,13 +5,11 @@ export default function Header() {
     const [logado, setLogado] = useState(false);
     const [dados, setDados] = useState(null);
     useEffect(() => {
-        // 2. Função assíncrona dentro do useEffect
         async function carregarDados() {
             try {
                 const api = await fetch('/api/exemplos/1');
                 if (!api.ok) return;
-                const json = await api.json(); // Adicionado o await aqui!
-                // 3. Salvamos no estado em vez de manipular o DOM direto
+                const json = await api.json();
                 setDados(json);
                 if (dados.data.logado === true) {
                     setLogado(true);
@@ -51,6 +49,18 @@ export default function Header() {
 
                 <NavLink to="/login" className={logado ? styles['logado'] : styles['naoLogado']}>
                     Sing in
+                </NavLink>
+
+                <NavLink
+                    to="/livros"
+                    className={({ isActive }) =>
+                        isActive ? styles['pagina_ativa'] : styles['pagina_desativa']
+                    }>
+                    Livros
+                </NavLink>
+
+                <NavLink to="/login" className={logado ? styles['logado'] : styles['naoLogado']}>
+                    Sign in
                 </NavLink>
             </nav>
         </header>
