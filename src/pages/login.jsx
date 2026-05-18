@@ -43,7 +43,7 @@ function Login() {
                         <input
                             className="login-input"
                             type="email"
-                            placeholder="Digite seu email"
+                            placeholder='Digite seu email'
                         />
 
                         <input
@@ -52,7 +52,7 @@ function Login() {
                             placeholder="Digite sua senha"
                         />
 
-                        <button className="login-button" onClick={handleLogin}>
+                        <button className='login-button' onClick={handleLogin}>
                             Entrar
                         </button>
                     </div>

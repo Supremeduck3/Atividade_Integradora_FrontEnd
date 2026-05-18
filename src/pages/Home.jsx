@@ -1,49 +1,54 @@
-import styles from "../style/home.module.css";
+import { useEffect, useState } from 'react';
 
-import Header from "../components/header";
-import Footer from "../components/footer";
+import styles from '../style/home.module.css';
 
-const livros = [
-    {
-        id: 1,
-        titulo: "Canção Para Ninar Menino Grande", autor: "Conceição Evaristo",
-        capa: "/public/img/livro.png",
-  },
-    {
-        id: 2,
-        titulo: "A Moreninha",
-        autor: "Joaquim Manuel de Macedo",
-        capa: "/public/img/moreninha.png"
-  },
-    {
-        id: 3,
-        titulo: "Caminho de Pedras",
-        autor: "Rachel de Queiroz",
-        capa: "/public/img/caminho_das_pedras.png"
-  },
-    {
-        id: 4,
-        titulo: "Os Ratos",
-        autor: "Dyonelio Machado",
-        capa: "/public/img/ratos.png"
-  },
-];
+import Header from '../components/header/header';
+import Footer from '../components/footer/footer';
 
 function Home() {
+    const [livros, setLivros] = useState([]);
+
+    const [erro, setErro] = useState(null);
+
+    const [carregando, setCarregando] = useState(true);
+
+    useEffect(() => {
+        async function carregarLivros() {
+            try {
+                const resposta = await fetch('/api/livros');
+
+                const json = await resposta.json();
+
+                setLivros(json.data);
+            } catch (e) {
+                console.error(e);
+
+                setErro('Erro ao carregar livros');
+            } finally {
+                setCarregando(false);
+            }
+        }
+        carregarLivros();
+    }, []);
+
+    if (carregando) {
+        return <div>Carregando...</div>;
+    }
+
+    if (erro) {
+        return <div>{erro}</div>;
+    }
+
     return (
         <div className={styles.container}>
             <Header />
-
             <section className={styles.hero}>
-                <img src="/public/img/icones.png" alt='icones' />
-
+                <img src="/img/icones.png" alt="icones" />
                 <h1>
-                    Estude <span>livros</span> de forma inteligente
+                    Estude <span>livros</span> de forma inteligente{' '}
                 </h1>
 
-                <p>
-                    Explore resumos, análises e conteúdos para estudar melhor.
-                </p>
+                <p>Explore resumos, análises e conteúdos para estudar melhor.</p>
 
                 <button>Começar Agora</button>
             </section>
@@ -56,13 +61,15 @@ function Home() {
                         <div key={index} className={styles.card}>
                             <img src={livro.capa} alt={livro.titulo} />
                             <h3>{livro.titulo}</h3>
+
                             <p>{livro.autor}</p>
-                        </div>))}
+                        </div>
+                    ))}
                 </div>
             </section>
 
             <Footer />
-            </div>
+        </div>
     );
 }
 

@@ -33,16 +33,16 @@
 }
 
 .header nav a {
-    color: #333;
-    font-size: 14px;
+    font-size: 16px;
     text-decoration: none;
+    
 }
 .signin_btn {
     justify-self: end;
     background-color: #ff5a00;
     color: white;
     padding: 8px 18px;
-    border-radius: 999px;
+    border-radius: 1000px;
     font-size: 14px;
     transition: 0.3s;
     text-decoration: none;
@@ -50,5 +50,21 @@
 
 .signin_btn:hover {
     background-color: #e14e00;
-    
+
+}
+
+.pagina_ativa{
+    color: red;
+    text-decoration: underline;
+}
+.pagina_desativada{
+    color: #333;
+}
+
+.logado {
+    display: none
+}
+
+.naoLogado {
+    display: block
 }
