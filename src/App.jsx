@@ -4,6 +4,7 @@ import Developers from "./pages/Developers";
 import Login from "./pages/login";
 import Teste from "./pages/teste";
 import Home from "./pages/Home";
+
 function App() {
     return (
         <BrowserRouter>
