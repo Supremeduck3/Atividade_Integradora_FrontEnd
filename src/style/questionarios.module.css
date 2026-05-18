@@ -86,3 +86,22 @@
 .cardContent button:hover {
     background: #10995b;
 }
+
+.botaoQuiz{
+    background-color: #00a85a;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 28px;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.2s ease;
+}
+
+.botaoQuiz:hover{
+    background-color: 008f4d;
+    transform: scale(1.03);
+}

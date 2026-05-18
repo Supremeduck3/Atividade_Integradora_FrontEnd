@@ -7,6 +7,7 @@ import PaginaLivros from './pages/PaginaLivros';
 import DetalhePersonagem from './pages/DetalhePersonagem';
 import NotFound from './components/erroFound/notFound';
 import Questionarios from './pages/Questionarios';
+import Quiz from './pages/Quiz';
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="*" element={<NotFound />} />
                 <Route path="/questionarios" element={<Questionarios />} />
+                <Route path="/quiz/:id" element={<Quiz />} />
             </Routes>
         </BrowserRouter>
     );
