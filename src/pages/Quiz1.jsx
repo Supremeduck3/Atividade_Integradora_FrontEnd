@@ -1,7 +1,7 @@
 import { useState} from 'react';
 
-import header from '../components/header';
-import footer from '../components/footer';
+import Header from "../components/header/header";
+import Footer from "../components/footer/footer";
 import styles from '../style/quiz1.module.css';
 
 const perguntas = [
