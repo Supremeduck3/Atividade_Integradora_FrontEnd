@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "../style/questionarios.module.css";
-import Header from '../components/header';
-import Footer from '../components/footer';
-
+import Header from "../components/header/header";
+import Footer from "../components/footer/footer";
 const livros = [
     {
         id: 1,

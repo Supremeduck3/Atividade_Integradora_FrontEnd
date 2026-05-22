@@ -2,7 +2,7 @@ import { useState} from 'react';
 
 import Header from '../components/header/header';
 import Footer from '../components/footer/footer';
-import styles from '../style/quiz1.module.css';
+import styles from '../style/quiz2.module.css';
 
 
 const perguntas = [
@@ -92,15 +92,15 @@ const perguntas = [
         comentario: 'A alternativa B está correta porque Carolina representa a idealização feminina e amorosa típica do Romantismo.'
 
     },
-],
+];
 
 function  Quiz2() {
-    const [ perguntaAutal, setperguntaAtual] = useState(0);
+    const [ perguntaAtual, setPerguntaAtual] = useState(0);
     const [ respostaSelecionada, setRespostaSelecionada] = useState(null);
     const [ acertos, setAcertos] = useState(0);
     const [ finalizado, setFinalizado] = useState(false);
 
-    const pergunta = pergunta[perguntaAtual];
+    const pergunta = perguntas[perguntaAtual];
 
     function selecionarResposta(index) {
         if( respostaSelecionada !== null) return;
@@ -118,7 +118,7 @@ function  Quiz2() {
         return;
       }
 
-      if( perguntaAutal < perguntas.length -1) {
+      if( perguntaAtual < perguntas.length +1) {
         setperguntaAtual(perguntaAutal + 1);
         setRespostaSelecionada(null);
       } else {
@@ -127,14 +127,14 @@ function  Quiz2() {
     }
 
     function perguntaAnterior() {
-        if ( perguntaAutal > 0) {
-            setperguntaAtual(perguntaAutal - 1);
+        if ( perguntaAtual > 0) {
+            setperguntaAtual(perguntaAtual - 1);
             setRespostaSelecionada(null);
         }
     }
      
     function reiniciarQuiz() {
-        setperguntaAtual(0);
+        setPerguntaAtual(0);
         setRespostaSelecionada(null);
         setAcertos(0);
         setFinalizado(false);
@@ -151,7 +151,7 @@ function  Quiz2() {
                 <Header /> 
             
             <main className= {styles.main}> 
-                <Selection className= {styles.resultadoFinal}>
+                <section className= {styles.resultadoFinal}>
                     <h1>Resultado Final</h1>
                     <h2>A moreninha</h2>
 
@@ -169,7 +169,7 @@ function  Quiz2() {
                         Refazer Quiz 
                       </button>
 
-                </Selection>
+                </section>
 
             </main>
 
