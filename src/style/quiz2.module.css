@@ -32,7 +32,7 @@
     color: #444;
 }
 
-.lyout {
+.layout {
     display: flex;
     flex-direction: column;
     gap: 24px;
