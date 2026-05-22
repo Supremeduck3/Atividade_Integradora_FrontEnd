@@ -39,4 +39,21 @@ const perguntas = [
         dica: 'Observe que a memória, na escrita de Conceição Evaristo, não é apenas lembrança: ela também denuncia, reconstrói e dá voz a experiências silenciadas.',
         comentario: 'A alternativa C é correta porque a memória aparece como uma forma de recuperar histórias e identidades. A autora valoriza vozes que foram apagadas ou diminuídas pela sociedade.'
     },
+    {
+        numero: 3,
+        autor: 'CONCEIÇÃO EVARISTO',
+        trecho: '“As personagens carregavam no corpo as marcas da vida, mas também a força de continuar. Em cada gesto simples, havia resistência, afeto e sobrevivência.”',
+        pergunta: 'A partir do trecho, é possível afirmar que as personagens são representadas como:',
+        aternativas: [
+            'Figuras frágeis, sem capacidade de enfrentar a realidade.',
+            'Pessoas marcadas por dores sociais, mas também por força e resistência.',
+            'Personagens sem profundidade emocional.',
+            'Indivíduos totalmente desligados da história coletiva.',
+            'Seres idealizados que vivem sem conflitos.'
+        ],
+
+        correta: 1,
+        dica:  'Preste atenção nas palavras “marcas da vida”, “força”, “resistência” e “sobrevivência”. Elas indicam sofrimento, mas também luta.',
+        comentario:  'A alternativa B é correta porque o trecho mostra personagens atravessadas por dificuldades, mas que resistem. Esse é um ponto forte na literatura de Conceição Evaristo.'
+    }
 ]
