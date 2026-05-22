@@ -24,7 +24,7 @@ function Quiz5() {
                     headers: myHeader
                 };
 
-                const api = await fetch("http://localhost:3000/api/quiz/1", opcoes);
+                const api = await fetch("https://atividade-portugues-backend.onrender.com/api/quiz/5", opcoes);
                 const json = await api.json();
 
                 setQuiz(json);
