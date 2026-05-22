@@ -1,62 +1,308 @@
-import { useState} from 'react';
+import { useEffect, useState } from "react";
 
 import Header from "../components/header/header";
 import Footer from "../components/footer/footer";
-import styles from '../style/quiz1.module.css';
 
+import styles from "../style/quiz1.module.css";
 
-const perguntas = [
-    {
-        numero: 1,
-        autor: 'CONCEIÇÃO EVARISTO',
-        trecho: '"Fio Jasmim trazia a cidade nos olhos e no corpo, um corpo que parecia conter todas as histórias do cais, das linhas férreas e das ladeiras. Quando Juventina o olhava, não via apenas o homem, mas a soma de todas as ausências e de todos os regressos que formavam a sua própria escrevivência."',
-        pergunta: 'De acordo com a análise do fragmento citado, a "escrevivência" mencionada refere-se a:',
-        alternativas: [
-            'Uma técnica de escrita puramente ficcional sem relação com a realidade.',
-            'Apenas ao ato de registrar eventos históricos de forma documental.',
-            'Ao esquecimento total dos detalhes da vida na adolescência.',
-            'À união indissociável entre a vivência pessoal/coletiva de corpos negros e a criação literária.',
-            'Uma expressão que denota a falta de instrução formal dos personagens.',
-        ],
+function Quiz1() {
+    const [quiz, setQuiz] = useState(null);
+    const [erro, setErro] = useState(null);
 
-        correta: 3,
-        dica: "Foque no conceito de Escrevivência: a fusão da memória coletiva de mulheres negras com a ficção. Note como as ausências e a inconstância afetiva de Fio Jasmim revelam as marcas do racismo estrutural e da solidão da mulher negra.",
-        comentario: 'A alternativa D é correta porque a “escrevivência” é o conceito-chave da Conceição Evaristo. O fragmento mostra que o corpo e a história do personagem carregam vivências individuais e coletivas, principalmente ligadas à memória, ancestralidade e experiência negra.',
-    },
-    {
-        numero: 2,
-        autor: 'CONCEIÇÃO EVARISTO',
-        trecho: '“A palavra nascia da lembrança, mas também da dor. Cada história contada parecia costurar o passado ao presente, revelando vozes que durante muito tempo foram silenciadas.”',
-        pergunta: 'No trecho, a memória aparece principalmente como:',
-        alternativas: [
-            'Um elemento sem importância para a construção da narrativa.',
-            'Uma forma de apagar completamente as dores do passado.',
-            'Um recurso para reconstruir histórias, identidades e vozes silenciadas.',
-            'Uma fuga fantasiosa sem relação com a realidade social.',
-            'Um detalhe usado apenas para deixar o texto mais bonito.'
-        ],
+    const [perguntaAtual, setPerguntaAtual] = useState(0);
+    const [respostaSelecionada, setRespostaSelecionada] = useState(null);
+    const [acertos, setFinalizado] = useState(false);
 
-        correta: 2,
-        dica: 'Observe que a memória, na escrita de Conceição Evaristo, não é apenas lembrança: ela também denuncia, reconstrói e dá voz a experiências silenciadas.',
-        comentario: 'A alternativa C é correta porque a memória aparece como uma forma de recuperar histórias e identidades. A autora valoriza vozes que foram apagadas ou diminuídas pela sociedade.'
-    },
-    {
-        numero: 3,
-        autor: 'CONCEIÇÃO EVARISTO',
-        trecho: '“As personagens carregavam no corpo as marcas da vida, mas também a força de continuar. Em cada gesto simples, havia resistência, afeto e sobrevivência.”',
-        pergunta: 'A partir do trecho, é possível afirmar que as personagens são representadas como:',
-        alternativas: [
-            'Figuras frágeis, sem capacidade de enfrentar a realidade.',
-            'Pessoas marcadas por dores sociais, mas também por força e resistência.',
-            'Personagens sem profundidade emocional.',
-            'Indivíduos totalmente desligados da história coletiva.',
-            'Seres idealizados que vivem sem conflitos.'
-        ],
+    useEffect(() =>{
+        async function carregarQuiz() {
+            try{
+                const myHeader = new Headers({
+                    "x-api-key": "chaveSecreta"
+                });
+                const opcoes = {
+                    method: "GET",
+                    headers: myHeader
+                };
 
-        correta: 1,
-        dica:  'Preste atenção nas palavras “marcas da vida”, “força”, “resistência” e “sobrevivência”. Elas indicam sofrimento, mas também luta.',
-        comentario:  'A alternativa B é correta porque o trecho mostra personagens atravessadas por dificuldades, mas que resistem. Esse é um ponto forte na literatura de Conceição Evaristo.'
+                const api = await fetch("https://atividade-portugues-backend.onrender.com/api/quiz/1", opcoes);
+                const json = await api.json();
+
+                setQuiz(json);
+            } catch (e) {
+                setErro("Erro ao carregar o quiz");
+                console.error(e);
+            } 
+        }
+        carregarQuiz();
+    }, []);
+
+    if (erro) {
+        return (
+            <div className={styles.container}>
+                <Header />
+                <main className={styles.main}>
+                    <h1>{erro}</h1>
+                </main>
+                <Footer />
+            </div>
+        );
     }
-]
 
-export default Quiz1;
+    if (!quiz) {
+        return (
+            <div className={styles.container}>
+                <Header />
+                <main className={styles.main}>
+                    <h1>Carregando quiz...</h1>
+                </main>
+                <Footer />
+            </div>
+        );
+    }
+
+    const perguntas = quiz.perguntas;
+    const pergunta = perguntas[perguntaAtual];
+
+    function selecionarResposta(index){
+        if (respostaSelecionada !== null) return;
+
+        setRespostaSelecionada(index);
+
+        if(index === pergunta.correta){
+            setAcertos(acertos + 1);
+        }
+    }
+
+    function proximaPergunta() {
+        if (respostaSelecionada === null){
+            alert('Escolha uma alternativa antes de continuar.');
+            return;
+        }
+
+        if (perguntaAtual < perguntas.legth -1) {
+            setPerguntaAtual(perguntaAtual + 1)
+            setRespostaSelecionada(null);
+        }else {
+            setFinalizado(true);
+        }
+    }
+
+    function perguntaAnterior() {
+        if (perguntaAtual > 0){
+            setPerguntaAtual(perguntaAtual - 1);
+            setRespostaSelecionada(null);
+        }
+    }
+
+    function reiniciarQuiz(){
+        setPerguntaAtual(0);
+        setRespostaSelecionada(null);
+        setAcertos(0);
+        setFinalizado(false);
+    }
+
+    function letraAlternativa(index){
+        return String.fromCharCode(65 + index);
+    }
+
+    if (finalizado) {
+        return (
+            <div className={styles.container}>
+                <Header />
+
+                <main className={styles.main}>
+                    <section className={styles.resultadoFinal}>
+                        <h1>Resultado Final</h1>
+
+                        <h2>{quiz.titulo}</h2>
+
+                        <p>
+                            Você acertou <strong>{acertos}</strong> de{''}<strong>{perguntas.length}</strong> perguntas.
+                        </p>
+
+                        {acertos >= 4 ? (
+                            <p className={styles.mensagemBoa}>
+                                Muito bem! Você entendeu o conteúdo do livro.
+                            </p>
+                        ) :(
+                            <p className={styles.mensagemRuim}>
+                                Continue estudando. Você pode refazer o quiz.
+                            </p>
+                        )}
+
+                        <button className={styles.botaoProxima} onClick={reiniciarQuiz}>
+                            Refazer Quiz
+                        </button>
+                    </section>
+                </main>
+
+                <Footer />
+            </div>
+        );
+    }
+
+    return (
+           <div className={styles.container} >
+               <Header/> 
+   
+               <main className={styles.main}>
+                   <div className= {styles.voltar}>
+                       &lt; Estudo do livro
+                   </div>
+   
+                   <h1 className={styles.titulo}>Quiz</h1>
+   
+                   <p className={styles.subtitulo}>
+                       • Linguagens, Códigos e suas tecnologias
+                   </p>
+   
+                     <section className={styles.layout}>
+                       <div className={styles.areaPergunta}>
+                           <div className={styles.cardPergunta}>
+                               <strong className={styles.questao}>
+                                   Questão {pergunta.numero}
+                               </strong>
+   
+                               <button className={styles.botaoResultado}>
+                                   Voltar aos meus resultados
+                               </button>
+   
+                               <h2 className={styles.autor}>
+                                   {pergunta.autor}
+                               </h2>
+   
+                               <div className={styles.trecho}>
+                                   {pergunta.trecho}
+                               </div>
+   
+                               <p className={styles.perguntaTexto}>
+                                   {pergunta.pergunta}
+                               </p>
+   
+                               <div className={styles.alternativas}>
+                                   {pergunta.alternativas.map((alternativa, index) => {
+                                       let classeAlternativa = styles.alternativa;
+   
+                                       if (respostaSelecionada !== null) {
+                                           if (index === pergunta.correta) {
+                                               classeAlternativa = `${styles.alternativa} ${styles.correta}`;
+                                           }
+   
+                                           if (index === respostaSelecionada && index !== pergunta.correta) {
+                                               classeAlternativa = `${styles.alternativa} ${styles.incorreta}`;
+                                           }
+                                       }
+   
+                                       return (
+                                           <button
+                                               key={index}
+                                               className={classeAlternativa}
+                                               onClick={() => selecionarResposta(index)}
+                                           >
+                                               <span className={styles.letra}>
+                                                   {letraAlternativa(index)}
+                                               </span>
+   
+                                               <span className={styles.textoAlternativa}>
+                                                   {alternativa}
+                                               </span>
+   
+                                               {respostaSelecionada !== null && index === pergunta.correta && (
+                                                   <span className={styles.statusCorreto}>
+                                                       Resposta Correta
+                                                   </span>
+                                               )}
+   
+                                               {respostaSelecionada !== null &&
+                                                   index === respostaSelecionada &&
+                                                   index !== pergunta.correta && (
+                                                       <span className={styles.statusErrado}>
+                                                           Sua resposta
+                                                       </span>
+                                                   )}
+                                           </button>
+                                       );
+                                   })}
+                               </div>
+                           </div>
+   
+                           <div className={styles.comentario}>
+                               <div className={styles.professor}>
+   
+                                   <div>
+                                       <h3>Comentário do Professor</h3>
+                                       <span>Prof. Maria Helena| Leitura Brasileira</span>
+                                   </div>
+                               </div>
+   
+                               {respostaSelecionada === null ? (
+                                   <p>
+                                       Olá, futuro universitário! Selecione uma alternativa para visualizar o comentário da questão.
+                                   </p>
+                               ) : (
+                                   <p>
+                                       Olá, futuro universitário! {pergunta.comentario}
+                                   </p>
+                               )}
+   
+                               <div className={styles.linhaComentario}></div>
+   
+                               <div className={styles.rodapeComentario}>
+                                   <span>▣ Ver Vídeo Aula Relacionada</span>
+                                   <span>Isso foi útil? 👍 👎</span>
+                               </div>
+                           </div>
+                       </div>
+   
+                       <aside className={styles.lateral}>
+                           <div className={styles.cardLateral}>
+                               <h3>Dica de Estudo</h3>
+   
+                               <div className={styles.dica}>
+                                   "{pergunta.dica}"
+                               </div>
+                           </div>
+   
+                           <div className={styles.cardLateral}>
+                               <h3>Temas Relacionados</h3>
+   
+                               <div className={styles.tags}>
+                                   <span>Romantismo</span>
+                                   <span>Romance Urbano</span>
+                                   <span>Amor Idealizado</span>
+                               </div>
+                           </div>
+                       </aside>
+                   </section>
+   
+                   <section className={styles.navegacao}>
+                       <button
+                           className={styles.botaoAnterior}
+                           onClick={perguntaAnterior}
+                           disabled={perguntaAtual === 0}
+                       >
+                           ← Anterior
+                       </button>
+   
+                       <div className={styles.bolinhas}>
+                           {perguntas.map((_, index) => (
+                               <span
+                                   key={index}
+                                   className={index === perguntaAtual ? styles.ativa : ''}
+                               ></span>
+                           ))}
+                       </div>
+                       <button className={styles.botaoProxima} onClick={proximaPergunta}>
+                           {perguntaAtual === perguntas.length - 1 ? ' Finalizar →' : 'Próxima →'}
+                       </button>
+                   </section>
+   
+   
+               </main>
+           </div>
+        )
+   
+   
+   }
+   
+   export default Quiz1;
