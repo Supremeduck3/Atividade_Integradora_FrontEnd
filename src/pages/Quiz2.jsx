@@ -2,7 +2,7 @@ import { useState} from 'react';
 
 import Header from '../components/header/header';
 import Footer from '../components/footer/footer';
-import styles from '../style/quiz1.module.css';
+import styles from '../style/quiz2.module.css';
 
 
 const perguntas = [
