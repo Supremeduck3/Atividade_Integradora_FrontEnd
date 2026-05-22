@@ -80,7 +80,7 @@ const perguntas = [
         trecho: '“Carolina surge como figura encantadora, associada à pureza, à delicadeza e ao amor idealizado.”',
         pergunta: 'A personagem Carolina, em A Moreninha, representa principalmente:',
         alternativas: [
-             'A crítica ao capitalismo industrial.',
+            'A crítica ao capitalismo industrial.',
             'A idealização feminina típica do Romantismo.',
             'A rejeição total ao amor.',
             'A figura de uma guerreira medieval.',
