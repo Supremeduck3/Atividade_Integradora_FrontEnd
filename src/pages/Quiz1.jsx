@@ -4,13 +4,14 @@ import Header from "../components/header/header";
 import Footer from "../components/footer/footer";
 import styles from '../style/quiz1.module.css';
 
+
 const perguntas = [
     {
         numero: 1,
         autor: 'CONCEIÇÃO EVARISTO',
         trecho: '"Fio Jasmim trazia a cidade nos olhos e no corpo, um corpo que parecia conter todas as histórias do cais, das linhas férreas e das ladeiras. Quando Juventina o olhava, não via apenas o homem, mas a soma de todas as ausências e de todos os regressos que formavam a sua própria escrevivência."',
         pergunta: 'De acordo com a análise do fragmento citado, a "escrevivência" mencionada refere-se a:',
-        alernativas: [
+        alternativas: [
             'Uma técnica de escrita puramente ficcional sem relação com a realidade.',
             'Apenas ao ato de registrar eventos históricos de forma documental.',
             'Ao esquecimento total dos detalhes da vida na adolescência.',
@@ -44,7 +45,7 @@ const perguntas = [
         autor: 'CONCEIÇÃO EVARISTO',
         trecho: '“As personagens carregavam no corpo as marcas da vida, mas também a força de continuar. Em cada gesto simples, havia resistência, afeto e sobrevivência.”',
         pergunta: 'A partir do trecho, é possível afirmar que as personagens são representadas como:',
-        aternativas: [
+        alternativas: [
             'Figuras frágeis, sem capacidade de enfrentar a realidade.',
             'Pessoas marcadas por dores sociais, mas também por força e resistência.',
             'Personagens sem profundidade emocional.',
@@ -57,3 +58,5 @@ const perguntas = [
         comentario:  'A alternativa B é correta porque o trecho mostra personagens atravessadas por dificuldades, mas que resistem. Esse é um ponto forte na literatura de Conceição Evaristo.'
     }
 ]
+
+export default Quiz1;
