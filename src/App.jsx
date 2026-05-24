@@ -11,6 +11,7 @@ import Quiz2 from './pages/Quiz2';
 import Quiz3 from './pages/Quiz3';
 import Quiz4 from './pages/Quiz4';
 import Quiz5 from './pages/Quiz5';
+import Sobre from './pages/Sobre';
 
 function App() {
     return (
@@ -28,6 +29,7 @@ function App() {
                 <Route path="/quiz/3" element={<Quiz3/>} />
                 <Route path="/quiz/4" element={<Quiz4/>} />
                 <Route path="/quiz/5" element={<Quiz5/>} />
+                <Route path="/sobre" element={<Sobre />} />
             </Routes>
         </BrowserRouter>
     );
