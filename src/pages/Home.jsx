@@ -15,11 +15,21 @@ function Home() {
     useEffect(() => {
         async function carregarLivros() {
             try {
-                const resposta = await fetch('/api/livros');
+                const resposta = await fetch(
+                    "https://atividade-portugues-backend.onrender.com/api/livro",
+                    {
+                        headers: {
+                            "x-api-key": "chaveSecreta"
+                        }
+                    }
+                );
 
                 const json = await resposta.json();
 
-                setLivros(json.data);
+                console.log(json);
+
+                setLivros(json);
+
             } catch (e) {
                 console.error(e);
 
@@ -28,6 +38,7 @@ function Home() {
                 setCarregando(false);
             }
         }
+
         carregarLivros();
     }, []);
 
@@ -42,13 +53,17 @@ function Home() {
     return (
         <div className={styles.container}>
             <Header />
+
             <section className={styles.hero}>
                 <img src="/img/icones.png" alt="icones" />
+
                 <h1>
-                    Estude <span>livros</span> de forma inteligente{' '}
+                    Estude <span>livros</span> de forma inteligente
                 </h1>
 
-                <p>Explore resumos, análises e conteúdos para estudar melhor.</p>
+                <p>
+                    Explore resumos, análises e conteúdos para estudar melhor.
+                </p>
 
                 <button>Começar Agora</button>
             </section>
@@ -59,7 +74,11 @@ function Home() {
                 <div className={styles.booksGrid}>
                     {livros.map((livro, index) => (
                         <div key={index} className={styles.card}>
-                            <img src={livro.capa} alt={livro.titulo} />
+                            <img
+                                src={livro.capa}
+                                alt={livro.titulo}
+                            />
+
                             <h3>{livro.titulo}</h3>
 
                             <p>{livro.autor}</p>

@@ -51,9 +51,11 @@ export default function Header() {
                     Livros
                 </NavLink>
 
-                <NavLink to="/login" className={logado ? styles['logado'] : styles['naoLogado']}>
-                    Sign in
+                <NavLink to="/sobre" className={({ isActive }) =>
+            isActive ? styles['pagina_ativa'] : styles['pagina_desativa']}>
+                   Sobre
                 </NavLink>
+
             </nav>
         </header>
     );

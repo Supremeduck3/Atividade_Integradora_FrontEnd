@@ -1,0 +1,305 @@
+.tela {
+  font-family: Arial, sans-serif;
+  color: #222222;
+  background-color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.corVerde { 
+  color: #21c46b; 
+}
+
+.corAzul { 
+  color: #4e82f7; 
+}
+
+.corLaranja { 
+  color: #ff6b00; 
+}
+
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 8%;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  position: relative;
+  z-index: 10;
+}
+
+.logoPrincipal {
+  font-size: 26px;
+  font-weight: bold;
+  color: #ff6b00;
+}
+
+.menu {
+  display: flex;
+  gap: 30px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #6a1b9a;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.menu a:hover {
+  color: #ff6b00;
+}
+
+.menu a.abaAtiva {
+  color: #ff6b00;
+  font-weight: 500;
+}
+
+.perfilUsuario {
+  text-decoration: none;
+}
+
+.fotoAvatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #dbdbdb;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.conteudo {
+  flex: 1;
+  padding: 60px 8%;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  background-color: #ffffff;
+}
+
+.secaoDestaque {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5%;
+}
+
+.textoDestaque {
+  flex: 1;
+}
+
+.tituloDestaque {
+  font-size: 52px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: #222222;
+}
+
+.descricaoDestaque {
+  color: #666666;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  font-size: 16px;
+}
+
+.botaoMembros {
+  background-color: #4e82f7;
+  color: white;
+  border: none;
+  padding: 14px 35px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.botaoMembros:hover {
+  opacity: 0.9;
+}
+
+.ladoImagem {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.blocoCinzaGrande {
+  width: 100%;
+  max-width: 500px;
+  height: 340px;
+  background-color: #dbdbdb;
+  border-radius: 24px;
+}
+
+.secaoMissao {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 5%;
+}
+
+.ladoGrid {
+  flex: 1;
+}
+
+.containerGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  max-width: 400px;
+}
+
+.blocoGrid {
+  background-color: #dbdbdb;
+  border-radius: 16px;
+}
+
+.bloco1 { 
+  height: 160px; 
+}
+
+.bloco2 { 
+  height: 100px; 
+}
+
+.bloco3 { 
+  height: 120px; 
+}
+
+.bloco4 { 
+  height: 180px; 
+  margin-top: -60px; 
+}
+
+.textoMissao {
+  flex: 1.2;
+}
+
+.tituloMissao {
+  font-size: 38px;
+  margin-bottom: 20px;
+  color: #222222;
+}
+
+.textoMissao p {
+  color: #666666;
+  line-height: 1.6;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.listaMissao {
+  list-style: none;
+  padding: 0;
+  margin-top: 25px;
+}
+
+.listaMissao li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 16px;
+  font-size: 15px;
+  color: #666666;
+  line-height: 1.5;
+}
+
+.listaMissao li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #222222;
+  font-weight: bold;
+}
+
+.rodape {
+  border-top: 1px solid #f0f0f0;
+  padding: 40px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #666666;
+}
+
+.logoRodape {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ff6b00;
+  margin-bottom: 8px;
+}
+
+.rodapeEsquerda p {
+  margin: 4px 0;
+}
+
+.rodapeCentro a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #666666;
+}
+
+.rodapeCentro a:hover {
+  color: #ff6b00;
+}
+
+.rodapeDireita {
+  display: flex;
+  gap: 12px;
+}
+
+.iconeSocial {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #ededed;
+}
+
+@media (max-width: 768px) {
+
+  .cabecalho {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 20px;
+  }
+
+  .menu {
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .secaoDestaque,
+  .secaoMissao {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .tituloDestaque {
+    font-size: 32px;
+  }
+
+  .ladoImagem,
+  .ladoGrid {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .rodape {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .containerGrid {
+    margin: 0 auto;
+  }
+
+  .bloco4 {
+    margin-top: 0;
+  }
+}
