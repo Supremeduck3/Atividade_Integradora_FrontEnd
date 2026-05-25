@@ -1,22 +1,12 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 import styles from './../style/sobre.module.css';
+import Header from '../components/header/header';
 
 export default function Sobre() {
   return (
-    <div className={styles.tela}>
-      <header className={styles.cabecalho}>
-        <div className={styles.logoPrincipal}>Bookly</div>
-        <nav className={styles.menu}>
-          <Link to="/">Home</Link>
-          <Link to="/dev">Devs</Link>
-          <Link to="/livros">Livros</Link>
-          <Link to="/sobre" className={styles.abaAtiva}>Sobre</Link>
-        </nav>
-      <Link to="/login" className={styles.perfilUsuario}>
-  <div className={styles.fotoAvatar}></div>
-</Link>
-      </header>
+      <div className={styles.tela}>
+          <Header/>
 
       <main className={styles.conteudo}>
         <section className={styles.secaoDestaque}>
