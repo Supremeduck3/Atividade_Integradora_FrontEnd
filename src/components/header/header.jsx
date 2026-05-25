@@ -39,10 +39,13 @@ export default function Header() {
                     Equipe
                 </NavLink>
 
+<<<<<<< HEAD
                 <NavLink to="/simulado" className={logado ? styles['logado'] : styles['naoLogado']}>
                     Simulado
                 </NavLink>
 
+=======
+>>>>>>> 2540350873d6772de44d469b61038ce8269b9146
                 <NavLink
                     to="/videoaulas"
                     className={({ isActive }) =>

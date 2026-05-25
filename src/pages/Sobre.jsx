@@ -1,23 +1,13 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 import styles from './../style/sobre.module.css';
+import Header from '../components/header/header';
+import Footer from '../components/footer/footer';
 
 export default function Sobre() {
   return (
-    <div className={styles.tela}>
-      <header className={styles.cabecalho}>
-        <div className={styles.logoPrincipal}>Bookly</div>
-        <nav className={styles.menu}>
-          <Link to="/">Home</Link>
-          <Link to="/dev">Devs</Link>
-          <Link to="/sing-in">Sing in</Link>
-          <Link to="/livros">Livros</Link>
-          <Link to="/sobre" className={styles.abaAtiva}>Sobre</Link>
-        </nav>
-      <Link to="/login" className={styles.perfilUsuario}>
-  <div className={styles.fotoAvatar}></div>
-</Link>
-      </header>
+      <div className={styles.tela}>
+          <Header/>
 
       <main className={styles.conteudo}>
         <section className={styles.secaoDestaque}>
@@ -46,7 +36,7 @@ export default function Sobre() {
               <div className={`${styles.blocoGrid} ${styles.bloco4}`}></div>
             </div>
           </div>
-          
+
           <div className={styles.textoMissao}>
             <h2 className={styles.tituloMissao}>
               Nossa <span className={styles.corLaranja}>Missão</span>:
@@ -91,3 +81,4 @@ export default function Sobre() {
     </div>
   );
 }
+
