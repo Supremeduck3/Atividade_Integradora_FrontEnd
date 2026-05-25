@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 import styles from './../style/sobre.module.css';
 import Header from '../components/header/header';
+import Footer from '../components/footer/footer';
 
 export default function Sobre() {
   return (
@@ -80,3 +81,4 @@ export default function Sobre() {
     </div>
   );
 }
+
