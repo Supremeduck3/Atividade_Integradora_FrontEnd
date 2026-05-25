@@ -38,11 +38,16 @@ function Home() {
                                 '6uztY7YTa2Dcgnf2ovDC2Kqmwvq2PdTMOlkx1bLwmhO2HQpQoXHMhk1cBcIjzHj9lztTbW7I83UZ91C8uSos-n8kOx3UuqU8n0BIDVm1venccSH0QVyNYKkLTZboaUpd',
                         },
                     }),
+                    fetch('https://clubelivro-backend-zui4.onrender.com/api/livro', {
+                        headers: {
+                            'x-api-key': 'livr0',
+                        },
+                    }),
                 ]);
 
-                const [json1, json2, json3, json4] = await Promise.all(resposta.map((r) => r.json()));
+                const [json1, json2, json3, json4,json5] = await Promise.all(resposta.map((r) => r.json()));
 
-                const todosLivros = [...json1, ...json2, ...json3,...json4];
+                const todosLivros = [...json1, ...json2, ...json3,...json4, json5];
 
                 setLivros(todosLivros);
 
