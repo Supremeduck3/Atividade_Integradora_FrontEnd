@@ -7,16 +7,16 @@
   flex-direction: column;
 }
 
-.corVerde { 
-  color: #21c46b; 
+.corVerde {
+  color: #21c46b;
 }
 
-.corAzul { 
-  color: #4e82f7; 
+.corAzul {
+  color: #4e82f7;
 }
 
-.corLaranja { 
-  color: #ff6b00; 
+.corLaranja {
+  color: #ff6b00;
 }
 
 .cabecalho {
@@ -159,21 +159,21 @@
   border-radius: 16px;
 }
 
-.bloco1 { 
-  height: 160px; 
+.bloco1 {
+  height: 160px;
 }
 
-.bloco2 { 
-  height: 100px; 
+.bloco2 {
+  height: 100px;
 }
 
-.bloco3 { 
-  height: 120px; 
+.bloco3 {
+  height: 120px;
 }
 
-.bloco4 { 
-  height: 180px; 
-  margin-top: -60px; 
+.bloco4 {
+  height: 180px;
+  margin-top: -60px;
 }
 
 .textoMissao {
