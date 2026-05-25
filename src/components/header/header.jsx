@@ -39,10 +39,6 @@ export default function Header() {
                     Devs
                 </NavLink>
 
-                <NavLink to="/login" className={logado ? styles['logado'] : styles['naoLogado']}>
-                    Sing in
-                </NavLink>
-
                 <NavLink
                     to="/livros"
                     className={({ isActive }) =>
