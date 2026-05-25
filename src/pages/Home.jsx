@@ -15,20 +15,36 @@ function Home() {
     useEffect(() => {
         async function carregarLivros() {
             try {
-                const resposta = await fetch(
-                    "https://atividade-portugues-backend.onrender.com/api/livro",
-                    {
+                const resposta = await Promise.all([
+                    fetch('https://atividade-portugues-backend.onrender.com/api/livro', {
                         headers: {
-                            "x-api-key": "chaveSecreta"
-                        }
-                    }
-                );
+                            'x-api-key': 'chaveSecreta',
+                        },
+                    }),
+                    fetch('https://ratsjs.onrender.com/api/livros', {
+                        headers: {
+                            'x-api-key':
+                                'Fq0CotClRneRPJAeCakJsrSwGyVCJU58tQrPWYgLCK3ei9HT-Ygajl2KXCLiZTPO',
+                        },
+                    }),
+                    fetch('https://clubelivro-backend.onrender.com/api/livros', {
+                        headers: {
+                            'x-api-key': 'entreLinhas123',
+                        },
+                    }),
+                    fetch('https://olhosdagua.onrender.com/api/livro', {
+                        headers: {
+                            'x-api-key':
+                                '6uztY7YTa2Dcgnf2ovDC2Kqmwvq2PdTMOlkx1bLwmhO2HQpQoXHMhk1cBcIjzHj9lztTbW7I83UZ91C8uSos-n8kOx3UuqU8n0BIDVm1venccSH0QVyNYKkLTZboaUpd',
+                        },
+                    }),
+                ]);
 
-                const json = await resposta.json();
+                const [json1, json2, json3, json4] = await Promise.all(resposta.map((r) => r.json()));
 
-                console.log(json);
+                const todosLivros = [...json1, ...json2, ...json3,...json4];
 
-                setLivros(json);
+                setLivros(todosLivros);
 
             } catch (e) {
                 console.error(e);
