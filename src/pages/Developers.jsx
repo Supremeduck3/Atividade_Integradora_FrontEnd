@@ -25,7 +25,7 @@ function Developers() {
 
     if (erro) return <div>{erro}</div>;
     if (!dados) return <div>Carregando...</div>
-    
+
     const membros = dados.data.membros;
     const mascotes = dados.data.mascotes;
 
@@ -62,7 +62,7 @@ function Developers() {
             <section className='mascotes'>
     {mascotes.map((mascote, index) => (
         <div key={index} className={`mascote ${mascote.cor}`}>
-            <img 
+            <img
                 className='avatar'
                 src={mascote.foto}
                 alt={mascote.nome}
