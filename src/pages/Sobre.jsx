@@ -10,7 +10,6 @@ export default function Sobre() {
         <nav className={styles.menu}>
           <Link to="/">Home</Link>
           <Link to="/dev">Devs</Link>
-          <Link to="/sing-in">Sing in</Link>
           <Link to="/livros">Livros</Link>
           <Link to="/sobre" className={styles.abaAtiva}>Sobre</Link>
         </nav>
@@ -46,7 +45,7 @@ export default function Sobre() {
               <div className={`${styles.blocoGrid} ${styles.bloco4}`}></div>
             </div>
           </div>
-          
+
           <div className={styles.textoMissao}>
             <h2 className={styles.tituloMissao}>
               Nossa <span className={styles.corLaranja}>Missão</span>:
