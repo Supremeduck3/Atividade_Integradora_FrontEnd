@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 
-import Header from "../components/header/header";
-import Footer from "../components/footer/footer";
+import Header from "../../components/header/header";
+import Footer from "../../components/footer/footer";
 
-import styles from "../style/quiz4.module.css";
+import styles from "./quiz1.module.css";
 
-function Quiz4() {
+function Quiz1() {
     const [quiz, setQuiz] = useState(null);
     const [erro, setErro] = useState(null);
 
     const [perguntaAtual, setPerguntaAtual] = useState(0);
     const [respostaSelecionada, setRespostaSelecionada] = useState(null);
-    const [acertos, setFinalizado] = useState(false);
+    const [acertos, setAcertos] = useState(0);
+    const [finalizado, setFinalizado] = useState(false)
 
     useEffect(() =>{
         async function carregarQuiz() {
@@ -24,7 +25,7 @@ function Quiz4() {
                     headers: myHeader
                 };
 
-                const api = await fetch("https://atividade-portugues-backend.onrender.com/api/quiz/4", opcoes);
+                const api = await fetch("https://atividade-portugues-backend.onrender.com/api/quiz/1", opcoes);
                 const json = await api.json();
 
                 setQuiz(json);
@@ -305,4 +306,4 @@ function Quiz4() {
    
    }
    
-   export default Quiz4;
+   export default Quiz1;

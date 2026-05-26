@@ -1,4 +1,4 @@
-import '../style/App.css';
+import styles from './login.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
@@ -10,9 +10,9 @@ function Login() {
     }
 
     return (
-        <div className="login-container">
-            <div className="login-left">
-                <div className="login-navbar">
+        <div className={styles.loginContainer}>
+            <div className={styles.loginLeft}>
+                <div className={styles.loginNavbar}>
                     <nav>
                         <Link to="/">Home</Link>
 
@@ -24,40 +24,40 @@ function Login() {
                     </nav>
                 </div>
 
-                <div className="left-overlay">
+                <div className={styles.leftOverlay}>
                     <p>MEU PAINEL</p>
 
                     <h1>LOGIN BOOKLY</h1>
                 </div>
             </div>
 
-            <div className="login-right">
-                <div className="login-card">
-                    <h1 className="bookly-logo">Bookly</h1>
+            <div className={styles.loginRight}>
+                <div className={styles.loginCard}>
+                    <h1 className={styles.booklyLogo}>Bookly</h1>
 
                     <h2>Entrar</h2>
 
                     <p>Acesse a conta para continuar</p>
 
-                    <div className="login-inputs">
+                    <div className={styles.loginInputs}>
                         <input
-                            className="login-input"
+                            className={styles.loginInput}
                             type="email"
                             placeholder='Digite seu email'
                         />
 
                         <input
-                            className="login-input"
+                            className={styles.loginInput}
                             type="password"
                             placeholder="Digite sua senha"
                         />
 
-                        <button className='login-button' onClick={handleLogin}>
+                        <button className={styles.loginButton} onClick={handleLogin}>
                             Entrar
                         </button>
                     </div>
 
-                    <span className="login-text">Ainda não tem conta ? Cadastra-se</span>
+                    <span className={styles.loginText}>Ainda não tem conta ? Cadastra-se</span>
                 </div>
             </div>
         </div>
