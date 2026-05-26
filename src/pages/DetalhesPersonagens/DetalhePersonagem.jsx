@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
-import styles from './../style/personagens.module.css';
+import styles from './detalhePersonagem.module.css';
 
 function DetalhePersonagem() {
     const { id } = useParams();

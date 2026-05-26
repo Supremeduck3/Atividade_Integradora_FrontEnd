@@ -1,12 +1,12 @@
 
-.login-container {
+.loginContainer {
     width: 100%;
     min-height: 100vh;
     display: flex;
 }
 
 
-.login-left {
+.loginLeft {
     width: 50%;
     background: linear-gradient(180deg, #ff7b00, #ff5a00);
     display: flex;
@@ -16,7 +16,7 @@
     overflow: hidden;
 }
 
-.login-left::before {
+.loginLeft::before {
     content: "";
     position: absolute;
     width: 700px;
@@ -27,7 +27,7 @@
 }
 
 
-.login-navbar {
+.loginNavbar {
     position: absolute;
     top: 35px;
     width: 100%;
@@ -36,13 +36,13 @@
     z-index: 5;
 }
 
-.login-navbar nav {
+.loginNavbar nav {
     display: flex;
     align-items: center;
     gap: 40px;
 }
 
-.login-navbar nav a {
+.loginNavbar nav a {
     text-decoration: none;
     color: white;
     font-size: 18px;
@@ -51,7 +51,7 @@
     transition: 0.3s;
 }
 
-.login-navbar nav a::after {
+.loginNavbar nav a::after {
     content: "";
     position: absolute;
     left: 0;
@@ -62,28 +62,28 @@
     transition: 0.3s;
 }
 
-.login-navbar nav a:hover::after {
+.loginNavbar nav a:hover::after {
     width: 100%;
 }
 
 
-.left-overlay {
+.leftOverlay {
     z-index: 2;
     color: white;
     text-align: center;
 }
 
-.left-overlay p {
+.leftOverlay p {
     font-size: 24px;
     margin-bottom: 10px;
 }
 
-.left-overlay h1 {
+.leftOverlay h1 {
     font-size: 60px;
     font-weight: bold;
 }
 
-.login-right {
+.loginRight {
     width: 50%;
     background: #f5f5f5;
     display: flex;
@@ -92,7 +92,7 @@
 }
 
 
-.login-card {
+.loginCard {
     width: 420px;
     background: white;
     padding: 50px;
@@ -102,31 +102,31 @@
     flex-direction: column;
 }
 
-.bookly-logo {
+.booklyLogo {
     font-size: 60px;
     color: #ff5a00;
     margin-bottom: 20px;
 }
 
-.login-card h2 {
+.loginCard h2 {
     font-size: 46px;
     margin-bottom: 10px;
     color: #222;
 }
 
-.login-card p {
+.loginCard p {
     color: #666;
     margin-bottom: 30px;
     font-size: 18px;
 }
 
 
-.login-inputs {
+.loginInputs {
     display: flex;
     flex-direction: column;
 }
 
-.login-input {
+.loginInput {
     height: 55px;
     border-radius: 12px;
     border: 1px solid #ddd;
@@ -137,11 +137,11 @@
     transition: 0.3s;
 }
 
-.login-input:focus {
+.loginInput:focus {
     border: 1px solid #ff5a00;
 }
 
-.login-button {
+.loginButton {
     height: 55px;
     border: none;
     border-radius: 40px;
@@ -153,11 +153,11 @@
     transition: 0.3s;
 }
 
-.login-button:hover {
+.loginButton:hover {
     background: #e14e00;
 }
 
-.login-text {
+.loginText {
     margin-top: 20px;
     text-align: center;
     color: #666;
@@ -165,15 +165,15 @@
 
 
 @media (max-width: 900px) {
-    .login-left {
+    .loginLeft {
         display: none;
     }
 
-    .login-right {
+    .loginRight {
         width: 100%;
     }
 
-    .login-card {
+    .loginCard {
         width: 90%;
     }
 }

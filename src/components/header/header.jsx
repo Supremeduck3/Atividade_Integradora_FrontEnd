@@ -45,23 +45,23 @@ export default function Header() {
                     Home
                 </NavLink>
                 <NavLink
-                    to="/equipe"
+                    to="/dev"
                     className={({ isActive }) =>
                         isActive ? styles['pagina_ativa'] : styles['pagina_desativa']
                     }>
                     Equipe
                 </NavLink>
 
-                <NavLink to="/simulado" className={logado ? styles['logado'] : styles['naoLogado']}>
-                    Simulado
+                <NavLink to="/questionarios" className={logado ? styles['logado'] : styles['naoLogado']}>
+                    Questionarios
                 </NavLink>
 
                 <NavLink
-                    to="/videoaulas"
+                    to="/quiz"
                     className={({ isActive }) =>
                         isActive ? styles['pagina_ativa'] : styles['pagina_desativa']
                     }>
-                    Vídeo Aulas
+                    Quiz
                 </NavLink>
 
                 <NavLink to="/sobre" className={({ isActive }) =>
