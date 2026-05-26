@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
-import styles from "./../style/personagens.module.css";
+import styles from "./personagens.module.css";
 
 function PaginaPersonagens() {
   const [dados, setDados] = useState(null);
