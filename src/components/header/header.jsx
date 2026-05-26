@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import styles from './header.module.css';
+import Carregamento from '../carregamento/carregamento';
 import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
 export default function Header() {
     const [dados, setDados] = useState(null);
@@ -30,7 +31,7 @@ export default function Header() {
     }, []);
 
     if (erro) return <div>{erro}</div>;
-    if (!dados) return <div>Carregando...</div>;
+    if (!dados) return <Carregamento/>
 
     const img = dados.url;
     return (
