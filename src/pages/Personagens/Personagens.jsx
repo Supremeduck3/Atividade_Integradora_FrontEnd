@@ -4,30 +4,40 @@ import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
 import styles from "./personagens.module.css";
 
+const API_URL = "https://atividade-portugues-backend.onrender.com";
+const API_KEY = "chaveSecreta";
+
 function PaginaPersonagens() {
-  const [dados, setDados] = useState(null);
+  const [personagens, setPersonagens] = useState([]);
   const [erro, setErro] = useState(null);
 
   useEffect(() => {
-    async function carregarDados() {
+    async function carregarPersonagens() {
       try {
-        const api = await fetch("/api/personagens");
-        const json = await api.json();
+        const response = await fetch(`${API_URL}/api/upload/adicionar`, {
+          headers: {
+            "x-api-key": API_KEY,
+          },
+        });
 
-        setDados(json);
+        const json = await response.json();
+
+        // json é um array de { id, foto, descricao }
+        // foto = URL do Supabase, descricao = nome do personagem
+        // filtra só os 6 primeiros IDs
+        const primeiros = json.filter((p) => p.id <= 6);
+        setPersonagens(primeiros);
       } catch (e) {
         setErro("Erro ao carregar os personagens");
         console.error(e);
       }
     }
 
-    carregarDados();
+    carregarPersonagens();
   }, []);
 
   if (erro) return <div>{erro}</div>;
-  if (!dados) return <div>Carregando...</div>;
-
-  const personagens = dados.data.personagens;
+  if (!personagens.length) return <div>Carregando...</div>;
 
   return (
     <div className={styles.pagina_completa}>
@@ -48,25 +58,24 @@ function PaginaPersonagens() {
         </div>
 
         <div className={styles.grid_personagens}>
-          {personagens.map((p, index) => (
-            <div key={index} className={styles.card_personagem}>
+          {personagens.map((p) => (
+            <div key={p.id} className={styles.card_personagem}>
               <div className={styles.foto_container}>
                 <img
-                  src={p.capa} // vem do backend
-                  alt={p.nome}
+                  src={p.foto}
+                  alt={p.descricao}
                   className={
-                    p.nome === "Pérola Maria" || p.nome === "Irene"
-                      ? "foto-ajustada"
+                    p.descricao === "Pérola Maria" || p.descricao === "Irene"
+                      ? styles.foto_ajustada
                       : ""
                   }
                 />
               </div>
               <div className={styles.info_personagem}>
-                <h3>{p.nome}</h3>
-                <p>{p.resumo}</p>
+                <h3>{p.descricao}</h3>
 
                 <Link
-                  to={`/personagem/${p.nome}`}
+                  to={`/personagem/${p.id}`}
                   className={styles.btn_ler_sobre}
                 >
                   Ler Sobre <span className={styles.seta}>→</span>
