@@ -1,0 +1,95 @@
+.container {
+    width: 100%;
+    min-height: 100vh;
+    text-align: center;
+}
+
+
+.titleSection {
+    margin: 40px 0;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.titleSection h2 {
+    font-size: 34px;
+    font-weight: bold;
+    line-height: 1.2;
+    position: relative;
+    z-index: 1;
+}
+
+.titleSection p {
+    color: #666;
+    margin-top: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.titleSection img {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 11000px;
+    max-width: 100%;
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+.verde {
+    color: #22c55e;
+}
+
+.azul {
+    color: #3b82f6;
+}
+
+.laranja {
+    color: #ff5a00;
+}
+
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 40px 20px;
+    max-width: 1100px;
+    margin: 70px auto 0;
+    padding: 0 20px;
+    justify-items: center;
+}
+
+.card {
+    width: 120px;
+    text-align: center;
+}
+
+.card p {
+    font-size: 14px;
+    color: #333;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 10px;
+}
+
+.mascotes {
+    margin: 80px 0;
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    flex-wrap: wrap;
+}
+
+.mascote img {
+    width: 120px;
+    margin: 0 auto;
+}

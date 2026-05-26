@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import "../style/App.css";
-import Footer from '../components/footer/footer';
-import Header from "../components/header/header";
+import Footer from '../../components/footer/footer';
+import Header from "../../components/header/header";
+import styles from './desenvolvedores.module.css';
 
 function Developers() {
     const [dados, setDados] = useState(null);
@@ -27,18 +27,18 @@ function Developers() {
     if (!dados) return <div>Carregando...</div>
 
     const membros = dados.data.membros;
-    const mascotes = dados.data.mascotes;
+  
 
     return (
-        <div className='container'>
+        <div className={styles.container}>
             <Header />
 
-            <section className='title-section'>
+            <section className={styles.titleSection}>
                 <img src='/img/icones.png' alt='icones decorativos' />
 
                 <h2>
                     sobre os <br />
-                    <span className='verde'>integrantes</span>
+                    <span className={styles.verde}>integrantes</span>
                 </h2>
 
                 <p>
@@ -46,11 +46,11 @@ function Developers() {
                 </p>
             </section>
 
-            <section className='grid'>
+            <section className={styles.grid}>
                 {membros.map((membro, index) => (
-                    <div key={index} className='card'>
+                    <div key={index} className={styles.card}>
                         <img
-                            className='avatar'
+                            className={styles.avatar}
                             src={membro.foto}
                             alt={membro.nome}
                             />
@@ -58,28 +58,6 @@ function Developers() {
                     </div>
                 ))}
             </section>
-
-            <section className='mascotes'>
-    {mascotes.map((mascote, index) => (
-        <div key={index} className={`mascote ${mascote.cor}`}>
-            <img
-                className='avatar'
-                src={mascote.foto}
-                alt={mascote.nome}
-            />
-            <p>{mascote.nome}</p>
-            </div>
-            ))}
-            </section>
-
-            <section className='mascotes'>
-                {mascotes.map((mascote, index) => (
-                <div key={index} className={`mascote ${mascote.cor}`}>
-                <p>{mascote.nome}</p>
-                    </div>
-                ))}
-            </section>
-
             <Footer />
         </div>
     )
