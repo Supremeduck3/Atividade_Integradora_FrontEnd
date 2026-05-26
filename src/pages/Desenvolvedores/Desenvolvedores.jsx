@@ -9,7 +9,10 @@ function Developers() {
 
     useEffect(() => {
         async function carregarDados() {
-            try {
+            const o = 13
+            
+            for (let i = 0 ; i < o ; i++){
+                try {
                 const api = await fetch("/api/equipe"); //ajustar a rota conforme beckend
                 const json = await api.json();
 
@@ -17,6 +20,7 @@ function Developers() {
             } catch (e) {
                 setErro("Erro ao carregar os dados da equipe.");
                 console.error(e);
+            }
             }
         }
 
