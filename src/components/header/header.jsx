@@ -69,7 +69,7 @@ export default function Header() {
             isActive ? styles['pagina_ativa'] : styles['pagina_desativa']}>
                    Sobre
                 </NavLink>
-                <img src={img.url} classname={styles.imagem}></img>
+                <div className={styles.signin_btn}>sing in</div>
             </nav>
         </header>
     );

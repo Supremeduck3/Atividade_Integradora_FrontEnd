@@ -1,9 +1,8 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-
 
 .header {
     display: grid;
@@ -28,6 +27,7 @@
 
 .header nav {
     display: flex;
+    align-items: center;
     justify-content: center;
     gap: 30px;
 }
@@ -35,10 +35,9 @@
 .header nav a {
     font-size: 16px;
     text-decoration: none;
-
 }
+
 .signin_btn {
-    justify-self: end;
     background-color: #ff5a00;
     color: white;
     padding: 8px 18px;
@@ -46,29 +45,33 @@
     font-size: 14px;
     transition: 0.3s;
     text-decoration: none;
+    white-space: nowrap;
 }
 
 .signin_btn:hover {
     background-color: #e14e00;
-
 }
 
-.pagina_ativa{
-    color: red;
+.pagina_ativa {
+    color: #ff5a00;
     text-decoration: underline;
 }
-.pagina_desativada{
+
+.pagina_desativada {
     color: #333;
 }
 
 .logado {
-    display: none
+    display: none;
 }
 
 .naoLogado {
-    display: block
+    display: block;
 }
-.imagem{
-    height: 100px;
-    width: 100px;
+
+.imagem {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
 }
