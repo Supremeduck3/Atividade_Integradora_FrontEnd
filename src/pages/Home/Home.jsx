@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import styles from '../style/home.module.css';
+import styles from './home.module.css';
 
-import Header from '../components/header/header';
-import Footer from '../components/footer/footer';
+import Header from '../../components/header/header';
+import Footer from '../../components/footer/footer';
 
 function Home() {
     const [livros, setLivros] = useState([]);

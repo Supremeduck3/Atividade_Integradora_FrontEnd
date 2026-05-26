@@ -10,7 +10,7 @@ function Developers() {
     useEffect(() => {
         async function carregarDados() {
             try {
-                const api = await fetch("/api/equipe"); //ajustar a rota conforme back-kend
+                const api = await fetch("/api/equipe"); //ajustar a rota conforme beckend
                 const json = await api.json();
 
                 setDados(json);
