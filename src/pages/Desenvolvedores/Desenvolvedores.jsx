@@ -3,45 +3,69 @@ import Footer from '../../components/footer/footer';
 import Header from "../../components/header/header";
 import styles from './desenvolvedores.module.css';
 
-const API_URL = "https://atividade-portugues-backend.onrender.com";
-const API_KEY = "chaveSecreta";
+const ICONES_URL = "https://atividade-portugues-backend.onrender.com/api/upload/19/imagem";
+const ICONES_API_KEY = "chaveSecreta";
+
+const APIS_MEMBROS = [
+    {
+        url: "https://atividade-portugues-backend.onrender.com/api/upload/adicionar",
+        key: "chaveSecreta",
+    },
+    
+];
 
 function Developers() {
     const [membros, setMembros] = useState([]);
+    const [icones, setIcones] = useState(null);
+    const [carregando, setCarregando] = useState(true);
     const [erro, setErro] = useState(null);
 
     useEffect(() => {
-        async function carregarMembros() {
-            try {
-                const response = await fetch(`${API_URL}/api/upload/adicionar`, {
-                    headers: {
-                        "x-api-key": API_KEY,
-                    },
+    async function carregarDados() {
+        try {
+            // membros
+            const respostasMembros = await Promise.all(
+                APIS_MEMBROS.map((api) =>
+                    fetch(api.url, { headers: { "x-api-key": api.key } })
+                )
+            );
+            const jsonsMembros = await Promise.all(
+                respostasMembros.map((r) => r.json())
+            );
+            const equipe = jsonsMembros.flat().filter((i) => i.id >= 7 && i.id <= 18);
+            setMembros(equipe);
+
+            
+            if (ICONES_URL) {
+                const respostaIcones = await fetch(ICONES_URL, {
+                    headers: { "x-api-key": ICONES_API_KEY },
                 });
-
-                const json = await response.json();
-
-                // filtra IDs 7 a 18 que são os membros da equipe
-                const equipe = json.filter((item) => item.id >= 7 && item.id <= 18);
-                setMembros(equipe);
-            } catch (e) {
-                setErro("Erro ao carregar os dados da equipe.");
-                console.error(e);
+                const jsonIcones = await respostaIcones.json();
+                setIcones(jsonIcones);
             }
+
+        } catch (e) {
+            setErro("Erro ao carregar os dados da equipe.");
+            console.error(e);
+        } finally {
+            setCarregando(false);
         }
+    }
 
-        carregarMembros();
-    }, []);
+    carregarDados();
+}, []);
 
+    if (carregando) return <div>Carregando...</div>;
     if (erro) return <div>{erro}</div>;
-    if (!membros.length) return <div>Carregando...</div>;
 
     return (
         <div className={styles.container}>
             <Header />
 
             <section className={styles.titleSection}>
-                <img src='/img/icones.png' alt='icones decorativos' />
+                {icones && (
+                    <img src={icones.url} alt='icones decorativos' />
+                )}
 
                 <h2>
                     sobre os <br />

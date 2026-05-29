@@ -10,8 +10,7 @@ function Quiz1() {
     const [erro, setErro] = useState(null);
 
     const [perguntaAtual, setPerguntaAtual] = useState(0);
-    const [respostaSelecionada, setRespostaSelecionada] = useState(null);
-    const [acertos, setAcertos] = useState(0);
+    const [respostas, setRespostas] = useState({}); // { índice_pergunta: índice_alternativa }
     const [finalizado, setFinalizado] = useState(false)
 
     useEffect(() =>{
@@ -25,8 +24,15 @@ function Quiz1() {
                     headers: myHeader
                 };
 
-                const api = await fetch("https://atividade-portugues-backend.onrender.com/api/quiz/1", opcoes);
+                const api = await fetch("https://atividade-portugues-backend.onrender.com/api/quiz/2", opcoes);
+
+                if (!api.ok) {
+                    throw new Error(`Erro na API: ${api.status}`);
+                }
+
                 const json = await api.json();
+
+                console.log("✅ Resposta da API:", json); // VER ISSO NO CONSOLE DO NAVEGADOR
 
                 setQuiz(json);
             } catch (e) {
@@ -64,41 +70,42 @@ function Quiz1() {
     const perguntas = quiz.perguntas;
     const pergunta = perguntas[perguntaAtual];
 
-    function selecionarResposta(index){
-        if (respostaSelecionada !== null) return;
+    // Resposta da pergunta atual (null se ainda não respondeu)
+    const respostaSelecionada = respostas[perguntaAtual] !== undefined ? respostas[perguntaAtual] : null;
 
-        setRespostaSelecionada(index);
+    // Acertos calculados com base em todas as respostas registradas
+    const acertos = Object.keys(respostas).filter(idx =>
+        respostas[parseInt(idx)] === perguntas[parseInt(idx)].correta
+    ).length;
 
-        if(index === pergunta.correta){
-            setAcertos(acertos + 1);
-        }
+    function selecionarResposta(index) {
+        if (respostas[perguntaAtual] !== undefined) return; // já respondeu esta pergunta
+
+        setRespostas({ ...respostas, [perguntaAtual]: index });
     }
 
     function proximaPergunta() {
-        if (respostaSelecionada === null){
+        if (respostas[perguntaAtual] === undefined) {
             alert('Escolha uma alternativa antes de continuar.');
             return;
         }
 
-        if (perguntaAtual < perguntas.legth -1) {
-            setPerguntaAtual(perguntaAtual + 1)
-            setRespostaSelecionada(null);
-        }else {
+        if (perguntaAtual < perguntas.length - 1) {
+            setPerguntaAtual(perguntaAtual + 1);
+        } else {
             setFinalizado(true);
         }
     }
 
     function perguntaAnterior() {
-        if (perguntaAtual > 0){
+        if (perguntaAtual > 0) {
             setPerguntaAtual(perguntaAtual - 1);
-            setRespostaSelecionada(null);
         }
     }
 
-    function reiniciarQuiz(){
+    function reiniciarQuiz() {
         setPerguntaAtual(0);
-        setRespostaSelecionada(null);
-        setAcertos(0);
+        setRespostas({});
         setFinalizado(false);
     }
 
@@ -118,7 +125,7 @@ function Quiz1() {
                         <h2>{quiz.titulo}</h2>
 
                         <p>
-                            Você acertou <strong>{acertos}</strong> de{''}<strong>{perguntas.length}</strong> perguntas.
+                            Você acertou <strong>{acertos}</strong> de <strong>{perguntas.length}</strong> perguntas.
                         </p>
 
                         {acertos >= 4 ? (
