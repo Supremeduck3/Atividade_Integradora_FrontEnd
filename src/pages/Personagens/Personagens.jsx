@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
 import styles from "./personagens.module.css";
-
+import Carregamento from "../../components/carregamento/carregamento";
 const API_URL = "https://atividade-portugues-backend.onrender.com";
 const API_KEY = "chaveSecreta";
 
@@ -22,9 +22,6 @@ function PaginaPersonagens() {
 
         const json = await response.json();
 
-        // json é um array de { id, foto, descricao }
-        // foto = URL do Supabase, descricao = nome do personagem
-        // filtra só os 6 primeiros IDs
         const primeiros = json.filter((p) => p.id <= 6);
         setPersonagens(primeiros);
       } catch (e) {
@@ -37,7 +34,7 @@ function PaginaPersonagens() {
   }, []);
 
   if (erro) return <div>{erro}</div>;
-  if (!personagens.length) return <div>Carregando...</div>;
+  if (!personagens.length) return ;
 
   return (
     <div className={styles.pagina_completa}>
