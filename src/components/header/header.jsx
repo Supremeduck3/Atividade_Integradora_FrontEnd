@@ -64,12 +64,21 @@ export default function Header() {
                     }>
                     Quiz
                 </NavLink>
+                <NavLink
+                    to="/personagens"
+                    className={({ isActive }) =>
+                        isActive ? styles['pagina_ativa'] : styles['pagina_desativa']
+                    }>
+                    Personagens
+                </NavLink>
 
                 <NavLink to="/sobre" className={({ isActive }) =>
             isActive ? styles['pagina_ativa'] : styles['pagina_desativa']}>
                    Sobre
                 </NavLink>
-                <div className={styles.signin_btn}>sing in</div>
+                <NavLink to="/login" className={styles.signin_btn}>
+                   Login
+                </NavLink>
             </nav>
         </header>
     );

@@ -1,77 +1,69 @@
-import { useEffect, useState } from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import Header from "../../components/header/header";
-import Footer from "../components/footer";
-import styles from "../style/home.module.css";
+import Footer from "../../components/footer/footer";
+import styles from "./livroPrincipal.module.css";
 
 function LivroPrincipal() {
-  const [dados, setDados] = useState(null);
-  const [erro, setErro] = useState(null);
+  const { state } = useLocation();
+  const livro = state?.livro;
 
-  useEffect(() => {
-    async function carregarDados() {
-      try {
-        const api = await fetch("/api/exemplos/1");
-        const json = await api.json();
-        setDados(json);
-      } catch (e) {
-        setErro("Erro ao carregar");
-        console.error(e);
-      }
-    }
-
-    carregarDados();
-  }, []);
-
-  if (erro) return (
-    <div className={styles.container}>
-      <Header />
-      <main style={{ padding: '50px', textAlign: 'center' }}>{erro}</main>
-      <Footer />
-    </div>
-  );
-
-  if (!dados) return (
-    <div className={styles.container}>
-      <Header />
-      <main style={{ padding: '50px', textAlign: 'center' }}>Carregando...</main>
-      <Footer />
-    </div>
-  );
+  // Se o usuário acessar /livro diretamente sem vir da Home
+  if (!livro) {
+    return (
+      <div className={styles.container}>
+        <Header />
+        <main className={styles.main_content} style={{ textAlign: 'center' }}>
+          <p style={{ color: '#999', marginBottom: '20px' }}>
+            Nenhum livro selecionado.
+          </p>
+          <Link to="/" style={{ color: '#ff5a00', fontWeight: 'bold', textDecoration: 'none' }}>
+            ← Voltar para a Home
+          </Link>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className={styles.container}>
       <Header />
 
-      <main className={styles.main_content} style={{ padding: '40px', maxWidth: '1200px', margin: '0 auto' }}>
-        <section style={{ display: 'flex', gap: '40px', alignItems: 'center', flexWrap: 'wrap' }}>
+      <main className={styles.main_content}>
+        <Link to="/" className={styles.btn_voltar} style={{
+          display: 'inline-block',
+          marginBottom: '24px',
+          color: '#ff5a00',
+          fontWeight: 'bold',
+          textDecoration: 'none',
+        }}>
+          ← Voltar
+        </Link>
 
-          <div style={{ flex: '1', minWidth: '300px' }}>
+        <section className={styles.book_section}>
+          <div className={styles.image_container}>
             <img
-              src={dados.data.capa}
-              alt={dados.data.titulo}
-              style={{ width: '100%', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.2)' }}
+              src={livro.capa}
+              alt={livro.titulo}
+              className={styles.capa_livro}
             />
           </div>
 
-          <div style={{ flex: '2', minWidth: '300px' }}>
-            <h1 style={{ fontSize: '2.5rem', marginBottom: '10px' }}>{dados.data.titulo}</h1>
-            <p style={{ fontSize: '1.2rem', lineHeight: '1.6', color: '#444', marginBottom: '20px' }}>
-              {dados.data.resumo}
-            </p>
+          <div className={styles.info_container}>
+            <h1 className={styles.titulo}>{livro.titulo}</h1>
 
-            <button style={{
-              padding: '15px 30px',
-              backgroundColor: '#0070f3',
-              color: 'white',
-              border: 'none',
-              borderRadius: '5px',
-              cursor: 'pointer',
-              fontWeight: 'bold'
-            }}>
-              Confirmar Leitura
-            </button>
+            {livro.autor && (
+              <p style={{ color: '#ff5a00', fontWeight: 'bold', marginBottom: '16px', fontSize: '1.1rem' }}>
+                {livro.autor}
+              </p>
+            )}
+
+            {(livro.resumo || livro.sinopse) && (
+              <p className={styles.resumo}>
+                {livro.resumo ?? livro.sinopse}
+              </p>
+            )}
           </div>
-
         </section>
       </main>
 
