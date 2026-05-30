@@ -7,7 +7,8 @@ import DetalhePersonagem from './pages/DetalhesPersonagens/DetalhePersonagem';
 import NotFound from './components/erroFound/notFound';
 import Questionarios from './pages/Questionarios/Questionarios';
 import Quiz1 from './pages/Quiz/Quiz1';
-import Sobre from './pages/Sobre/Sobre'
+import Sobre from './pages/Sobre/Sobre';
+import LivroPrincipal from './pages/LivroPrincipal/LivroPrincipal';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/Livro" element={<LivroPrincipal />} />
                 <Route path="/personagens" element={<PaginaPersonagens />} />
                 <Route path="/personagem/:id" element={<DetalhePersonagem />} />
                 <Route path="/dev" element={<Developers />} />

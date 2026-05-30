@@ -12,18 +12,6 @@ function Login() {
     return (
         <div className={styles.loginContainer}>
             <div className={styles.loginLeft}>
-                <div className={styles.loginNavbar}>
-                    <nav>
-                        <Link to="/">Home</Link>
-
-                        <Link to="/dev">Developers</Link>
-
-                        <Link to="/personagens">Personagens</Link>
-
-                        <Link to="/login">Login</Link>
-                    </nav>
-                </div>
-
                 <div className={styles.leftOverlay}>
                     <p>MEU PAINEL</p>
 
