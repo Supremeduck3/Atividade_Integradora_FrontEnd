@@ -53,12 +53,12 @@ export default function Header() {
                     Equipe
                 </NavLink>
 
-                <NavLink to="/questionarios" className={logado ? styles['logado'] : styles['naoLogado']}>
+                <NavLink to="/login" className={logado ? styles['logado'] : styles['naoLogado']}>
                     Questionarios
                 </NavLink>
 
                 <NavLink
-                    to="/quiz"
+                    to="/questionarios"
                     className={({ isActive }) =>
                         isActive ? styles['pagina_ativa'] : styles['pagina_desativa']
                     }>
