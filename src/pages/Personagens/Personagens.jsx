@@ -16,8 +16,9 @@ function PaginaPersonagens() {
       try {
         const response = await fetch(`${API_URL}/api/upload/adicionar`, {
           headers: {
-            "x-api-key": API_KEY,
-          },
+                "x-api-key": API_KEY,
+            },
+            cache:"no-cache",
         });
 
         const json = await response.json();
@@ -37,54 +38,51 @@ function PaginaPersonagens() {
   if (!personagens.length) return ;
 
   return (
-    <div className={styles.pagina_completa}>
-      <Header />
+      <div className={styles.pagina_completa}>
+          <Header />
 
-      <main className={styles.conteudo_personagens}>
-        <div className={styles.banner_personagens}>
-          <img
-            src="/img/icones.png"
-            alt="Decorativo"
-            className={styles.formas_decorativas}
-          />
-          <div className={styles.titulo_obra}>
-            <h2>Canção para Ninar</h2>
-            <h2 className={styles.destaque_laranja}>Menino Grande</h2>
-          </div>
-          <h1>Personagens</h1>
-        </div>
-
-        <div className={styles.grid_personagens}>
-          {personagens.map((p) => (
-            <div key={p.id} className={styles.card_personagem}>
-              <div className={styles.foto_container}>
-                <img
-                  src={p.foto}
-                  alt={p.descricao}
-                  className={
-                    p.descricao === "Pérola Maria" || p.descricao === "Irene"
-                      ? styles.foto_ajustada
-                      : ""
-                  }
-                />
+          <main className={styles.conteudo_personagens}>
+              <div className={styles.banner_personagens}>
+                  <img
+                      src="/img/icones.png"
+                      alt="Decorativo"
+                      className={styles.formas_decorativas}
+                  />
+                  <div className={styles.titulo_obra}>
+                      <h2>Canção para Ninar</h2>
+                      <h2 className={styles.destaque_laranja}>Menino Grande</h2>
+                  </div>
+                  <h1>Personagens</h1>
               </div>
-              <div className={styles.info_personagem}>
-                <h3>{p.descricao}</h3>
 
-                <Link
-                  to={`/personagem/${p.id}`}
-                  className={styles.btn_ler_sobre}
-                >
-                  Ler Sobre <span className={styles.seta}>→</span>
-                </Link>
+              <div className={styles.grid_personagens}>
+                  {personagens.map((p) => (
+                      <div key={p.id} className={styles.card_personagem}>
+                          <div className={styles.foto_container}>
+                              <img
+                                  src={`${p.foto}?v=${p.updated_at ? encodeURIComponent(p.updated_at) : p.id}`}
+                                  alt={p.descricao}
+                                  className={
+                                      p.descricao === 'Pérola Maria' || p.descricao === 'Irene'
+                                          ? styles.foto_ajustada
+                                          : ''
+                                  }
+                              />
+                          </div>
+                          <div className={styles.info_personagem}>
+                              <h3>{p.descricao}</h3>
+
+                              <Link to={`/personagem/${p.id}`} className={styles.btn_ler_sobre}>
+                                  Ler Sobre <span className={styles.seta}>→</span>
+                              </Link>
+                          </div>
+                      </div>
+                  ))}
               </div>
-            </div>
-          ))}
-        </div>
-      </main>
+          </main>
 
-      <Footer />
-    </div>
+          <Footer />
+      </div>
   );
 }
 

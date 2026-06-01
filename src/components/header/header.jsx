@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { LiaLanguageSolid } from 'react-icons/lia';
 import Carregamento from '../carregamento/carregamento';
 import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
 import { useContext } from 'react';
@@ -54,6 +55,7 @@ export default function Header() {
 
     if (erro) return <div>{erro}</div>;
     if (!dados) return <Carregamento />;
+
 
     return (
         <header className={styles.header}>

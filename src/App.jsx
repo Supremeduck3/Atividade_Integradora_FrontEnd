@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from './components/header/header.jsx'; // Garantindo o .jsx aqui
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Developers from './pages/Desenvolvedores/Desenvolvedores';
@@ -14,8 +13,6 @@ import LivroPrincipal from './pages/LivroPrincipal/LivroPrincipal';
 function App() {
     return (
         <BrowserRouter>
-            {/* O Header fica aqui, fixo no topo, fora das rotas */}
-            <Header />
 
             <Routes>
                 <Route path="/" element={<Home />} />

@@ -14,10 +14,13 @@ function extrairPrimeiroLivro(json) {
     if (json?.titulo || json?.capa) return json;
     return null;
 }
+const ICONES_URL = 'https://atividade-portugues-backend.onrender.com/api/upload/19/imagem';
+const ICONES_API_KEY = 'chaveSecreta';
 
 function Home() {
     const [livros, setLivros] = useState([]);
     const [erro, setErro] = useState(null);
+    const [icones, setIcones] = useState(null);
     const [carregando, setCarregando] = useState(true);
 
     useEffect(() => {
@@ -28,15 +31,28 @@ function Home() {
                         headers: { 'x-api-key': 'chaveSecreta' },
                     }),
                     fetch('https://ratsjs.onrender.com/api/livros', {
-                        headers: { 'x-api-key': 'Fq0CotClRneRPJAeCakJsrSwGyVCJU58tQrPWYgLCK3ei9HT-Ygajl2KXCLiZTPO' },
+                        headers: {
+                            'x-api-key':
+                                'Fq0CotClRneRPJAeCakJsrSwGyVCJU58tQrPWYgLCK3ei9HT-Ygajl2KXCLiZTPO',
+                        },
                     }),
                     fetch('https://clubelivro-backend.onrender.com/api/livros', {
                         headers: { 'x-api-key': 'entreLinhas123' },
                     }),
                     fetch('https://olhosdagua.onrender.com/api/livro', {
-                        headers: { 'x-api-key': '6uztY7YTa2Dcgnf2ovDC2Kqmwvq2PdTMOlkx1bLwmhO2HQpQoXHMhk1cBcIjzHj9lztTbW7I83UZ91C8uSos-n8kOx3UuqU8n0BIDVm1venccSH0QVyNYKkLTZboaUpd' },
+                        headers: {
+                            'x-api-key':
+                                '6uztY7YTa2Dcgnf2ovDC2Kqmwvq2PdTMOlkx1bLwmhO2HQpQoXHMhk1cBcIjzHj9lztTbW7I83UZ91C8uSos-n8kOx3UuqU8n0BIDVm1venccSH0QVyNYKkLTZboaUpd',
+                        },
                     }),
                 ]);
+                if (ICONES_URL) {
+                    const respostaIcones = await fetch(ICONES_URL, {
+                        headers: { 'x-api-key': ICONES_API_KEY },
+                    });
+                    const jsonIcones = await respostaIcones.json();
+                    setIcones(jsonIcones);
+                }
 
                 const jsons = await Promise.all(respostas.map((r) => r.json()));
                 const todosLivros = jsons.map(extrairPrimeiroLivro).filter(Boolean);
@@ -81,7 +97,7 @@ function Home() {
             <Header />
 
             <section className={styles.hero}>
-                <img src="/img/icones.png" alt="icones" />
+                <img src={icones.url} alt="icones" />
                 <h1>Estude <span>livros</span> de forma inteligente</h1>
                 <p>Explore resumos, análises e conteúdos para estudar melhor.</p>
                 <button>Começar Agora</button>
