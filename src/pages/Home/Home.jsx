@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import styles from './home.module.css';
 import Header from '../../components/header/header';
@@ -105,7 +105,7 @@ function Home() {
                 <img src={icones.url} alt="icones" />
                 <h1>Estude <span>livros</span> de forma inteligente</h1>
                 <p>Explore resumos, análises e conteúdos para estudar melhor.</p>
-                <button>Começar Agora</button>
+                <Link to="/personagens" className={styles.start_button}>Começar Agora</Link>
             </section>
 
             <section className={styles.booksSection}>
@@ -120,7 +120,7 @@ function Home() {
                             className={styles.card}
                             style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}
                         >
-                            <img src={livro.capa} alt={livro.titulo} />
+                            <img src={livro.capa ?  livro.capa : "vazio"}  alt={livro.titulo} />
                             <h3>{livro.titulo}</h3>
                             <p>{livro.autor}</p>
                         </Link>
