@@ -7,12 +7,6 @@ function LivroPrincipal() {
     const { state } = useLocation();
     const livro = state?.livro;
 
-    const dadosExtras = {
-        contextoHistorico:
-            'Canção para Ninar Menino Grande, romance lançado por Conceição Evaristo em 2018, investiga as complexas contradições do afeto e da masculinidade negra no Brasil contemporâneo. A narrativa acompanha a trajetória de Fio Jasmim, um ferroviário que cruza o país deixando um rastro de paixões e abandonos, encarnando o mito do "Príncipe Negro" e do sedutor invulnerável. No entanto, o verdadeiro núcleo histórico e social da obra reside na desconstrução desse arquétipo, revealing como a herança do patriarcado e do machismo molda o comportamento dos homens negros, muitas vezes hipersexualizados pelo racismo estrutural. O livro desloca o foco do conquistador para dar voz e profundidade às diversas mulheres que cruzaram o seu caminho, transformando o enredo em uma crônica densa sobre a solidariedade, a dor e a resiliência feminina diante da solidão e da rejeição amorosa.',
-        tagsPeriodo: ['Anos 70 - 80'],
-    };
-
     if (!livro) {
         return (
             <div className={styles.container}>
@@ -29,6 +23,12 @@ function LivroPrincipal() {
             </div>
         );
     }
+
+
+    const dadosExtras = {
+        contextoHistorico: livro.contexto ?? 'Contexto histórico não informado para este livro.',
+        tagsPeriodo: livro.anoPublicacao ? [`Ano ${livro.anoPublicacao}`] : ['Não informado'],
+    };
 
     return (
         <div className={styles.container}>
@@ -57,9 +57,11 @@ function LivroPrincipal() {
                             <span className={styles.stars}>☆☆☆☆☆</span>
                         </div>
 
+
                         <p className={styles.sinopse_curta}>
-                            {livro.resumo_curto ??
-                                'Canção para Ninar Menino Grande é uma novela publicada originalmente em 2018 pela editora Unipalmares, escrita por Conceição Evaristo, que explora profundamente questões de gênero, raça e relações afetivas.'}
+                            {livro.resumo
+                                ? `${livro.resumo.substring(0, 180)}...`
+                                : 'Sem resumo disponível.'}
                         </p>
 
                         <button className={styles.btn_avaliar}>
@@ -75,9 +77,9 @@ function LivroPrincipal() {
                             <span className={styles.icon_resumo}>🔖</span>
                             <h2>Resumo Completo</h2>
                         </div>
+                
                         <p className={styles.texto_resumo}>
-                            {livro.resumo_longo ??
-                                'Canção para ninar menino grande, de Conceição Evaristo, narra a trajetória de Fio Jasmim, um homem negro sedutor que, ao trabalhar na ferrovia, coleciona amores e abandonos entre diversas mulheres. A obra, pautada na escrevivência, foca na subjetividade dessas mulheres negras, revelando suas dores e o processo de cura e sororidade após o abandono do protagonista. O enredo desconstrói o mito da masculinidade ao evidenciar a covardia emocional do protagonista, focando na superação feminina e no cuidado mútuo.'}
+                            {livro.resumo ?? 'Nenhum resumo detalhado disponível.'}
                         </p>
                     </div>
                 </section>
@@ -86,6 +88,7 @@ function LivroPrincipal() {
                     <div className={styles.contexto_info}>
                         <div className={styles.detalhe_linha_branca}></div>
                         <h2>Contexto Histórico</h2>
+
                         <p>{dadosExtras.contextoHistorico}</p>
 
                         <div className={styles.tags_grid}>
