@@ -1,16 +1,17 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
+
 .tela {
-  font-family: Arial, sans-serif;
   color: #222222;
   background-color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   font-family: 'Jost', sans-serif;
+  width: 100%;
 }
 
 .corVerde {
@@ -23,57 +24,6 @@
 
 .corLaranja {
   color: #ff6b00;
-}
-
-.cabecalho {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 8%;
-  background-color: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  position: relative;
-  z-index: 10;
-}
-
-.logoPrincipal {
-  font-size: 26px;
-  font-weight: bold;
-  color: #ff6b00;
-}
-
-.menu {
-  display: flex;
-  gap: 30px;
-}
-
-.menu a {
-  text-decoration: none;
-  color: #6a1b9a;
-  font-size: 16px;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-.menu a:hover {
-  color: #ff6b00;
-}
-
-.menu a.abaAtiva {
-  color: #ff6b00;
-  font-weight: 500;
-}
-
-.perfilUsuario {
-  text-decoration: none;
-}
-
-.fotoAvatar {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background-color: #dbdbdb;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .conteudo {
@@ -104,7 +54,7 @@
 }
 
 .descricaoDestaque {
-  color: #666666;
+  color: #666;
   line-height: 1.6;
   margin-bottom: 25px;
   font-size: 16px;
@@ -193,7 +143,7 @@
 }
 
 .textoMissao p {
-  color: #666666;
+  color: #666;
   line-height: 1.6;
   font-size: 16px;
   margin-bottom: 20px;
@@ -210,7 +160,7 @@
   padding-left: 25px;
   margin-bottom: 16px;
   font-size: 15px;
-  color: #666666;
+  color: #666;
   line-height: 1.5;
 }
 
@@ -222,59 +172,7 @@
   font-weight: bold;
 }
 
-.rodape {
-  border-top: 1px solid #f0f0f0;
-  padding: 40px 8%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-  color: #666666;
-}
-
-.logoRodape {
-  font-size: 22px;
-  font-weight: bold;
-  color: #ff6b00;
-  margin-bottom: 8px;
-}
-
-.rodapeEsquerda p {
-  margin: 4px 0;
-}
-
-.rodapeCentro span {
-  margin: 0 15px;
-  color: #666666;
-  cursor: default;
-}
-
-.rodapeDireita {
-  display: flex;
-  gap: 12px;
-}
-
-.iconeSocial {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background-color: #ededed;
-}
-
 @media (max-width: 768px) {
-
-  .cabecalho {
-    flex-direction: column;
-    gap: 15px;
-    padding: 15px 20px;
-  }
-
-  .menu {
-    gap: 15px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
   .secaoDestaque,
   .secaoMissao {
     flex-direction: column;
@@ -289,12 +187,6 @@
   .ladoGrid {
     justify-content: center;
     width: 100%;
-  }
-
-  .rodape {
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
   }
 
   .containerGrid {
