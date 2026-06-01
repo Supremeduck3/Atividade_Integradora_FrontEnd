@@ -2,32 +2,14 @@ import { useState, useEffect } from 'react';
 import { LiaLanguageSolid } from 'react-icons/lia';
 import Carregamento from '../carregamento/carregamento';
 import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
-import { useContext } from 'react';
-import { LanguageContext } from '../../contexts/LanguageContext';
+import { LanguageProvider, useLang } from '../../contexts/LanguageContext';
 import styles from './header.module.css';
 
-const texts = {
-    'pt-br': {
-        equipe: "Equipe",
-        personagens: 'personagens',
-        sobre: 'sobre-nós',
-    },
-
-    en: {
-        equipe: 'Team',
-        personagens: 'characters',
-        sobre: 'About Us',
-    },
-};
-
 export default function Header() {
-    const { lang, toggleLanguage } = useContext(LanguageContext);
+    const { lang, toggleLang } = useLang();
     const [dados, setDados] = useState(null);
     const [erro, setErro] = useState(null);
 
-    {
-        texts[lang].contato;
-    }
 
     const logado = true;
     useEffect(() => {
@@ -73,7 +55,7 @@ export default function Header() {
                     className={({ isActive }) =>
                         isActive ? styles['pagina_ativa'] : styles['pagina_desativa']
                     }>
-                    {texts[lang].equipe}
+                    {lang === 'pt-BR' ? 'equipe' : 'team'}
                 </NavLink>
 
                 <NavLink to="/login" className={logado ? styles['logado'] : styles['naoLogado']}>
@@ -92,7 +74,7 @@ export default function Header() {
                     className={({ isActive }) =>
                         isActive ? styles['pagina_ativa'] : styles['pagina_desativa']
                     }>
-                    {texts[lang].personagens}
+                    {lang === 'pt-BR' ? 'personagens' : 'characters'}
                 </NavLink>
 
                 <NavLink
@@ -100,15 +82,14 @@ export default function Header() {
                     className={({ isActive }) =>
                         isActive ? styles['pagina_ativa'] : styles['pagina_desativa']
                     }>
-                    {texts[lang].sobre}
+                    {lang === 'pt-BR' ? 'sobre' : 'about'} 
                 </NavLink>
                 <NavLink to="/login" className={styles.signin_btn}>
                     Login
                 </NavLink>
-                <button onClick={toggleLanguage} className={styles.buttonIdioma}>
-                    <LiaLanguageSolid size={20} />
-                    {lang === 'pt-br' ? 'PT' : 'EN'}
-                </button>
+                <button onClick={toggleLang} className={styles.buttonIdioma}>
+                    <LiaLanguageSolid size={20} />  
+                    {lang === 'pt-BR' ? 'PT' : 'EN'}    </button>
             </nav>
         </header>
     );

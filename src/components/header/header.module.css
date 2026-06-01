@@ -79,8 +79,7 @@
 }
 
 .buttonIdioma {
-    width: 12vh;
-    height: 7vh;
+    padding: 8px 18px;
     background-color: #ff5a00;
     border-radius: 20px;
     display: flex;

@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { LanguageProvider } from '../../contexts/LanguageContext';
 
 import styles from './home.module.css';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import Carregamento from '../../components/carregamento/carregamento';
+
 
 // Extrai apenas o PRIMEIRO livro de cada API (cada backend = um livro)
 function extrairPrimeiroLivro(json) {
@@ -96,6 +98,7 @@ function Home() {
             </div>
         );
     }
+
 
     return (
         <div className={styles.container}>
