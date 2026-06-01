@@ -8,14 +8,14 @@ import styles from './header.module.css';
 
 const texts = {
     'pt-br': {
-        home: 'Página Principal',
-        contato: 'Contato',
-        sobre: 'Sobre Nós',
+        equipe: "Equipe",
+        personagens: 'personagens',
+        sobre: 'sobre-nós',
     },
 
     en: {
-        home: 'Home',
-        contato: 'Contact',
+        equipe: 'Team',
+        personagens: 'characters',
         sobre: 'About Us',
     },
 };
@@ -73,7 +73,7 @@ export default function Header() {
                     className={({ isActive }) =>
                         isActive ? styles['pagina_ativa'] : styles['pagina_desativa']
                     }>
-                    Equipe
+                    {texts[lang].equipe}
                 </NavLink>
 
                 <NavLink to="/login" className={logado ? styles['logado'] : styles['naoLogado']}>
@@ -92,7 +92,7 @@ export default function Header() {
                     className={({ isActive }) =>
                         isActive ? styles['pagina_ativa'] : styles['pagina_desativa']
                     }>
-                    Personagens
+                    {texts[lang].personagens}
                 </NavLink>
 
                 <NavLink
@@ -100,12 +100,12 @@ export default function Header() {
                     className={({ isActive }) =>
                         isActive ? styles['pagina_ativa'] : styles['pagina_desativa']
                     }>
-                    Sobre
+                    {texts[lang].sobre}
                 </NavLink>
                 <NavLink to="/login" className={styles.signin_btn}>
                     Login
                 </NavLink>
-                <button onClick={toggleLanguage}>
+                <button onClick={toggleLanguage} className={styles.buttonIdioma}>
                     <LiaLanguageSolid size={20} />
                     {lang === 'pt-br' ? 'PT' : 'EN'}
                 </button>
