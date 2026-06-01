@@ -69,9 +69,9 @@ export default function Sobre() {
           <p>Tornando o conhecimento acessível para todos.</p>
         </div>
         <div className={styles.rodapeCentro}>
-          <Link to="/termos">Termos de serviço</Link>
-          <Link to="/contato">Contato</Link>
-          <Link to="/sobre">Sobre</Link>
+          <span>Termos de serviço</span>
+          <span>Contato</span>
+          <span>Sobre</span>
         </div>
         <div className={styles.rodapeDireita}>
           <div className={styles.iconeSocial}></div>
@@ -81,4 +81,3 @@ export default function Sobre() {
     </div>
   );
 }
-
