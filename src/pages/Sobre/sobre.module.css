@@ -1,4 +1,8 @@
-
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 .tela {
   font-family: Arial, sans-serif;
   color: #222222;
@@ -6,6 +10,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  font-family: 'Jost', sans-serif;
 }
 
 .corVerde {
@@ -238,14 +243,10 @@
   margin: 4px 0;
 }
 
-.rodapeCentro a {
+.rodapeCentro span {
   margin: 0 15px;
-  text-decoration: none;
   color: #666666;
-}
-
-.rodapeCentro a:hover {
-  color: #ff6b00;
+  cursor: default;
 }
 
 .rodapeDireita {
