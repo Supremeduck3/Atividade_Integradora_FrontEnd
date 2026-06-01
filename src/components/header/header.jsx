@@ -1,8 +1,59 @@
-import styles from './header.module.css';
+import { useState, useEffect } from 'react';
 import Carregamento from '../carregamento/carregamento';
 import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { LanguageContext } from '../../contexts/LanguageContext';
+import styles from './header.module.css';
+
+const texts = {
+    'pt-br': {
+        home: 'Página Principal',
+        contato: 'Contato',
+        sobre: 'Sobre Nós',
+    },
+
+    en: {
+        home: 'Home',
+        contato: 'Contact',
+        sobre: 'About Us',
+    },
+};
+
 export default function Header() {
+    const { lang, toggleLanguage } = useContext(LanguageContext);
+    const [dados, setDados] = useState(null);
+    const [erro, setErro] = useState(null);
+
+    {
+        texts[lang].contato;
+    }
+
     const logado = true;
+    useEffect(() => {
+        async function carregarDados() {
+            try {
+                const api = await fetch(
+                    'https://atividade-portugues-backend.onrender.com/api/upload/2/imagem',
+                    {
+                        headers: {
+                            'x-api-key': 'chaveSecreta',
+                        },
+                    },
+                );
+                const json = await api.json();
+
+                setDados(json);
+            } catch (e) {
+                setErro('Erro ao carregar os dados da equipe.');
+                console.error(e);
+            }
+        }
+
+        carregarDados();
+    }, []);
+
+    if (erro) return <div>{erro}</div>;
+    if (!dados) return <Carregamento />;
 
     return (
         <header className={styles.header}>
@@ -52,6 +103,10 @@ export default function Header() {
                 <NavLink to="/login" className={styles.signin_btn}>
                     Login
                 </NavLink>
+                <button onClick={toggleLanguage}>
+                    <LiaLanguageSolid size={20} />
+                    {lang === 'pt-br' ? 'PT' : 'EN'}
+                </button>
             </nav>
         </header>
     );
