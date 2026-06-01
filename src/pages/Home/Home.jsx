@@ -6,7 +6,7 @@ import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import Carregamento from '../../components/carregamento/carregamento';
 
-// Extrai apenas o PRIMEIRO livro de cada API (cada backend = um livro)
+
 function extrairPrimeiroLivro(json) {
     if (Array.isArray(json) && json.length > 0) return json[0];
     if (Array.isArray(json?.data) && json.data.length > 0) return json.data[0];
