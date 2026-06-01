@@ -24,7 +24,6 @@ function LivroPrincipal() {
         );
     }
 
-
     const dadosExtras = {
         contextoHistorico: livro.contexto ?? 'Contexto histórico não informado para este livro.',
         tagsPeriodo: livro.anoPublicacao ? [`Ano ${livro.anoPublicacao}`] : ['Não informado'],
@@ -57,7 +56,6 @@ function LivroPrincipal() {
                             <span className={styles.stars}>☆☆☆☆☆</span>
                         </div>
 
-
                         <p className={styles.sinopse_curta}>
                             {livro.resumo
                                 ? `${livro.resumo.substring(0, 180)}...`
@@ -77,10 +75,11 @@ function LivroPrincipal() {
                             <span className={styles.icon_resumo}>🔖</span>
                             <h2>Resumo Completo</h2>
                         </div>
-                
+
                         <p className={styles.texto_resumo}>
                             {livro.resumo ?? 'Nenhum resumo detalhado disponível.'}
                         </p>
+
                     </div>
                 </section>
 
@@ -89,7 +88,9 @@ function LivroPrincipal() {
                         <div className={styles.detalhe_linha_branca}></div>
                         <h2>Contexto Histórico</h2>
 
-                        <p>{dadosExtras.contextoHistorico}</p>
+                        <p style={{ textAlign: 'justify', textJustify: 'inter-word' }}>
+                            {dadosExtras.contextoHistorico}
+                        </p>
 
                         <div className={styles.tags_grid}>
                             {dadosExtras.tagsPeriodo.map((tag, idx) => (
@@ -102,8 +103,6 @@ function LivroPrincipal() {
                             ))}
                         </div>
                     </div>
-
-                    <div className={styles.contexto_midia}></div>
                 </section>
             </main>
 

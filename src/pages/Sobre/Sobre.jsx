@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import styles from './sobre.module.css';
+import styles from './sobre.module.css'
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 
