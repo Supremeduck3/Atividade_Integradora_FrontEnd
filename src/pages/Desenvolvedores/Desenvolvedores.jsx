@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Footer from '../../components/footer/footer';
 import Header from "../../components/header/header";
 import styles from './desenvolvedores.module.css';
-
+import Carregamento from '../../components/carregamento/carregamento';
 const ICONES_URL = "https://atividade-portugues-backend.onrender.com/api/upload/19/imagem";
 const ICONES_API_KEY = "chaveSecreta";
 
@@ -11,7 +11,7 @@ const APIS_MEMBROS = [
         url: "https://atividade-portugues-backend.onrender.com/api/upload/adicionar",
         key: "chaveSecreta",
     },
-    
+
 ];
 
 function Developers() {
@@ -35,7 +35,7 @@ function Developers() {
             const equipe = jsonsMembros.flat().filter((i) => i.id >= 7 && i.id <= 18);
             setMembros(equipe);
 
-            
+
             if (ICONES_URL) {
                 const respostaIcones = await fetch(ICONES_URL, {
                     headers: { "x-api-key": ICONES_API_KEY },
@@ -55,7 +55,17 @@ function Developers() {
     carregarDados();
 }, []);
 
-    if (carregando) return <div>Carregando...</div>;
+    if (carregando) {
+            return (
+                <div className={styles.container}>
+                    <Header />
+                    <main style={{ display: 'flex', justifyContent: 'center', padding: '80px 0' }}>
+                        <Carregamento />
+                    </main>
+                    <Footer />
+                </div>
+            );
+        }
     if (erro) return <div>{erro}</div>;
 
     return (

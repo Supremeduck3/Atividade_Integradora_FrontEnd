@@ -93,7 +93,11 @@
       color: #666;
       font-size: 15px;
 }
-
+.carregamento {
+    display: 'flex';
+    justify-content: 'center';
+    padding: '80px 0';
+}
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 16px;
