@@ -1,4 +1,4 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -11,12 +11,11 @@
     font-family: 'Jost', sans-serif;
 }
 
-
 .titleSection {
     margin: 40px 0;
     position: relative;
     width: 100%;
-    min-height: 160px;     
+    min-height: 160px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -51,7 +50,6 @@
     z-index: 0;
 }
 
-
 .verde {
     color: #22c55e;
 }
@@ -63,7 +61,6 @@
 .laranja {
     color: #ff5a00;
 }
-
 
 .grid {
     display: grid;
@@ -100,6 +97,11 @@
     flex-shrink: 0;
 }
 
+.carregamento {
+    display: 'flex';
+    justify-content: 'center';
+    padding: '80px 0';
+}
 
 @media (max-width: 768px) {
     .grid {
