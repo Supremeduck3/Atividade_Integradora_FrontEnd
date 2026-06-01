@@ -10,35 +10,42 @@ import Carregamento from "../../components/carregamento/carregamento";
 const APIS = [
     {
         quizId: 2,
-        titulo: "Canção para Ninar Menino Grande",
-        progresso: "1/5",
-        url: "https://atividade-portugues-backend.onrender.com/api/livro",
-        apiKey: "chaveSecreta",
+        titulo: 'Canção para Ninar Menino Grande',
+        progresso: '1/5',
+        url: 'https://atividade-portugues-backend.onrender.com/api/livro',
+        apiKey: 'chaveSecreta',
     },
     {
         quizId: 3,
-        titulo: "A Moreninha",
-        progresso: "2/5",
-        url: "https://clubelivro-backend.onrender.com/api/livros",
-        apiKey: "entreLinhas123",
+        titulo: 'A Moreninha',
+        progresso: '2/5',
+        url: 'https://clubelivro-backend.onrender.com/api/livros',
+        apiKey: 'entreLinhas123',
     },
     {
         quizId: 4,
-        titulo: "Os Ratos",
-        progresso: "3/5",
-        url: "https://ratsjs.onrender.com/api/livros",
-        apiKey: "Fq0CotClRneRPJAeCakJsrSwGyVCJU58tQrPWYgLCK3ei9HT-Ygajl2KXCLiZTPO",
+        titulo: 'Os Ratos',
+        progresso: '3/5',
+        url: 'https://ratsjs.onrender.com/api/livros',
+        apiKey: 'Fq0CotClRneRPJAeCakJsrSwGyVCJU58tQrPWYgLCK3ei9HT-Ygajl2KXCLiZTPO',
     },
     {
         quizId: 5,
-        titulo: "Caminho das Pedras",
-        progresso: "4/5",
-        url: "https://clubelivro-backend-zui4.onrender.com/api/livro",
-        apiKey: "livr0",
+        titulo: 'Olhos da água',
+        progresso: '4/5',
+        url: 'https://olhosdagua.onrender.com/api/livro',
+        apiKey:'6uztY7YTa2Dcgnf2ovDC2Kqmwvq2PdTMOlkx1bLwmhO2HQpQoXHMhk1cBcIjzHj9lztTbW7I83UZ91C8uSos-n8kOx3UuqU8n0BIDVm1venccSH0QVyNYKkLTZboaUpd',
+    },
+    {
+        quizId: 6,
+        titulo: 'Caminho das Pedras',
+        progresso: '5/5',
+        url: 'https://devstones-backend.onrender.com/api/livro/',
+        apiKey: 'livr0',
     },
 ];
 
-// Extrai a URL da capa independente do formato retornado pela API
+
 function extrairCapa(json) {
     // Formato: array direto
     if (Array.isArray(json) && json.length > 0) return json[0].capa;
@@ -62,7 +69,7 @@ function Questionarios() {
                     APIS.map((api) =>
                         fetch(api.url, { headers: { "x-api-key": api.apiKey } })
                             .then((r) => r.json())
-                            .catch(() => null) // se uma API falhar, não quebra tudo
+                            .catch(() => null)
                     )
                 );
 
