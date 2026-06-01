@@ -45,6 +45,11 @@ function Home() {
                                 '6uztY7YTa2Dcgnf2ovDC2Kqmwvq2PdTMOlkx1bLwmhO2HQpQoXHMhk1cBcIjzHj9lztTbW7I83UZ91C8uSos-n8kOx3UuqU8n0BIDVm1venccSH0QVyNYKkLTZboaUpd',
                         },
                     }),
+                    fetch('https://devstones-backend.onrender.com/api/livro/', {
+                        headers: {
+                            'x-api-key': ' livr0',
+                        },
+                    }),
                 ]);
                 if (ICONES_URL) {
                     const respostaIcones = await fetch(ICONES_URL, {
