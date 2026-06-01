@@ -3,6 +3,7 @@
     background-color:#f7f8ff;
     display:flex;
     flex-direction: column;
+    font-family: 'Jost', sans-serif;
 }
 
 .main{
