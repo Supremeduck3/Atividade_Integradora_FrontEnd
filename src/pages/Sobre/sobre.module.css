@@ -239,14 +239,10 @@
   margin: 4px 0;
 }
 
-.rodapeCentro a {
+.rodapeCentro span {
   margin: 0 15px;
-  text-decoration: none;
   color: #666666;
-}
-
-.rodapeCentro a:hover {
-  color: #ff6b00;
+  cursor: default;
 }
 
 .rodapeDireita {
