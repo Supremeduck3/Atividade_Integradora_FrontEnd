@@ -19,6 +19,7 @@ function DetalhePersonagem() {
                     headers: {
                         "x-api-key": API_KEY,
                     },
+                    cache:"no-cache",
                 });
 
                 const json = await response.json();
