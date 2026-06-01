@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LanguageContext } from './LanguageContext.jsx';
+import { LanguageContext } from './LanguageContext';
 
 export function LanguageProvider({ children }) {
     const [lang, setLang] = useState(() => {
