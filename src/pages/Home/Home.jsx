@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { LanguageProvider, useLang} from '../../contexts/LanguageContext';
 
 import styles from './home.module.css';
 import Header from '../../components/header/header';
@@ -18,6 +19,7 @@ const ICONES_URL = 'https://atividade-portugues-backend.onrender.com/api/upload/
 const ICONES_API_KEY = 'chaveSecreta';
 
 function Home() {
+    const { lang, } = useLang();
     const [livros, setLivros] = useState([]);
     const [erro, setErro] = useState(null);
     const [icones, setIcones] = useState(null);
@@ -97,19 +99,20 @@ function Home() {
         );
     }
 
+
     return (
         <div className={styles.container}>
             <Header />
 
             <section className={styles.hero}>
                 <img src={icones.url} alt="icones" />
-                <h1>Estude <span>livros</span> de forma inteligente</h1>
-                <p>Explore resumos, análises e conteúdos para estudar melhor.</p>
-                <Link to="/personagens" className={styles.start_button}>Começar Agora</Link>
+                <h1>{lang === 'pt-BR' ? 'estude' : 'Study'} <span>{lang === 'pt-BR' ? 'livros' : 'books'}</span> In a smart way</h1>
+                <p>{lang === 'pt-BR' ? 'Explore resumos, análises e conteúdos para estudar melhor' : 'Explore summaries, analyses, and learning materials to improve your study habits.'}</p>
+                <button>{lang === 'pt-BR' ? 'Começar agora' : 'start now'}</button>
             </section>
 
             <section className={styles.booksSection}>
-                <h2>Explore os livros disponíveis</h2>
+                <h2>{lang === 'pt-BR' ? 'Explore os livros disponíveis' : 'Explore the available books'}</h2>
 
                 <div className={styles.booksGrid}>
                     {livros.map((livro, index) => (
