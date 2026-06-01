@@ -123,7 +123,7 @@ function Home() {
                             className={styles.card}
                             style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}
                         >
-                            <img src={livro.capa} alt={livro.titulo} />
+                            <img src={livro.capa ?  livro.capa : "vazio"}  alt={livro.titulo} />
                             <h3>{livro.titulo}</h3>
                             <p>{livro.autor}</p>
                         </Link>
