@@ -4,6 +4,7 @@
   flex-direction: column;
   min-height: 100vh;
   background-color: #f4f7f6;
+  font-family: 'Jost', sans-serif;
 }
 
 .main_content {
