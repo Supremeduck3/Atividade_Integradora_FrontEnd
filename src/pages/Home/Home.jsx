@@ -36,9 +36,6 @@ function Home() {
                     fetch('https://olhosdagua.onrender.com/api/livro', {
                         headers: { 'x-api-key': '6uztY7YTa2Dcgnf2ovDC2Kqmwvq2PdTMOlkx1bLwmhO2HQpQoXHMhk1cBcIjzHj9lztTbW7I83UZ91C8uSos-n8kOx3UuqU8n0BIDVm1venccSH0QVyNYKkLTZboaUpd' },
                     }),
-                    fetch('https://clubelivro-backend-zui4.onrender.com/api/livro', {
-                        headers: { 'x-api-key': 'livr0' },
-                    }),
                 ]);
 
                 const jsons = await Promise.all(respostas.map((r) => r.json()));

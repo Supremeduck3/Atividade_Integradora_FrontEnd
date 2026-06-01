@@ -1,12 +1,34 @@
 import { useState, useEffect } from 'react';
-import styles from './header.module.css';
 import Carregamento from '../carregamento/carregamento';
 import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { LanguageContext } from '../../contexts/LanguageContext';
+import styles from './header.module.css';
+
+const texts = {
+    'pt-br': {
+        home: 'Página Principal',
+        contato: 'Contato',
+        sobre: 'Sobre Nós',
+    },
+
+    en: {
+        home: 'Home',
+        contato: 'Contact',
+        sobre: 'About Us',
+    },
+};
+
 export default function Header() {
+    const { lang, toggleLanguage } = useContext(LanguageContext);
     const [dados, setDados] = useState(null);
     const [erro, setErro] = useState(null);
 
-    const logado = true
+    {
+        texts[lang].contato;
+    }
+
+    const logado = true;
     useEffect(() => {
         async function carregarDados() {
             try {
@@ -31,9 +53,8 @@ export default function Header() {
     }, []);
 
     if (erro) return <div>{erro}</div>;
-    if (!dados) return <Carregamento/>
+    if (!dados) return <Carregamento />;
 
-    const img = dados.url;
     return (
         <header className={styles.header}>
             <h1 className={styles.logo}>Bookly</h1>
@@ -72,13 +93,20 @@ export default function Header() {
                     Personagens
                 </NavLink>
 
-                <NavLink to="/sobre" className={({ isActive }) =>
-            isActive ? styles['pagina_ativa'] : styles['pagina_desativa']}>
-                   Sobre
+                <NavLink
+                    to="/sobre"
+                    className={({ isActive }) =>
+                        isActive ? styles['pagina_ativa'] : styles['pagina_desativa']
+                    }>
+                    Sobre
                 </NavLink>
                 <NavLink to="/login" className={styles.signin_btn}>
-                   Login
+                    Login
                 </NavLink>
+                <button onClick={toggleLanguage}>
+                    <LiaLanguageSolid size={20} />
+                    {lang === 'pt-br' ? 'PT' : 'EN'}
+                </button>
             </nav>
         </header>
     );
