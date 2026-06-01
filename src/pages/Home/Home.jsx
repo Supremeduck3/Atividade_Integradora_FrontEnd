@@ -46,7 +46,9 @@ function Home() {
                         },
                     }),
                     fetch('https://devstones-backend.onrender.com/api/livro/', {
-                        headers: { 'x-api-key': 'livr0' },
+                        headers: {
+                            'x-api-key': ' livr0',
+                        },
                     }),
                 ]);
                 if (ICONES_URL) {

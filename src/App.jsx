@@ -14,9 +14,6 @@ import LivroPrincipal from './pages/LivroPrincipal/LivroPrincipal';
 function App() {
     return (
         <BrowserRouter>
-            {/* O Header fica aqui, fixo no topo, fora das rotas */}
-            <Header />
-
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/Livro" element={<LivroPrincipal />} />
