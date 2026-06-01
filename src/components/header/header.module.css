@@ -77,3 +77,17 @@
     border-radius: 50%;
     object-fit: cover;
 }
+
+.buttonIdioma {
+    width: 12vh;
+    height: 7vh;
+    background-color: #ff5a00;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    cursor: pointer;
+    border-color: rgb(255, 255, 255);
+    border: none;
+}
