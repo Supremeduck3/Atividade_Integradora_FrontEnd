@@ -1,6 +1,9 @@
 import styles from "./footer.module.css"
+import { LanguageProvider, useLang } from '../../contexts/LanguageContext';
 
 export default function Footer(){
+    const { lang, } = useLang();
+
     return(
         <footer className={styles.footer}>
                 <div className={styles.footer_content}>
@@ -11,14 +14,14 @@ export default function Footer(){
                         <p>© 2026 Bookly Education. All rights reserved.</p>
 
                         <p>
-                            Tornando o conhecimento acessível para todos.
+                            {lang === 'pt-BR' ? 'Tornando o conhecimento acessível para todos.' : '"Making knowledge accessible to everyone."'}
                         </p>
                     </div>
 
                     <div className={styles.footer_center}>
-                        <a href="#">Termos de serviço</a>
-                        <a href="#">Contato</a>
-                        <a href="#">Sobre</a>
+                        <a href="#">{lang === 'pt-BR' ? 'Termos de serviço' : 'Terms of service'}</a>
+                        <a href="#">{lang === 'pt-BR' ? 'Contato' : 'Contact'}</a>
+                        <a href="#">{lang === 'pt-BR' ? 'Sobre' : 'About'}</a>
                     </div>
 
                     <div className={styles.footer_right}>

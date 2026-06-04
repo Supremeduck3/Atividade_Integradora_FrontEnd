@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import { LanguageProvider, useLang} from '../../contexts/LanguageContext';
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
 
 import styles from "./quiz1.module.css";
 
-// IDs das questões do quiz (ajuste conforme a API)
 const TOTAL_QUESTOES = 5;
 
 function Quiz1() {
+    const { lang, } = useLang();
     const { id } = useParams();
 
     const [questao, setQuestao] = useState(null);
@@ -115,11 +115,11 @@ function Quiz1() {
                 <Header />
                 <main className={styles.main}>
                     <section className={styles.resultadoFinal}>
-                        <h1>Resultado Final</h1>
+                        <h1>{lang === 'pt-BR' ? ' Resultado Final' : 'Final Result'}</h1>
                         <h2>Quiz {id ? `— Livro ${id}` : ""}</h2>
                         <p>
-                            Você acertou <strong>{acertos}</strong> de{" "}
-                            <strong>{totalRespondidas}</strong> perguntas.
+                            {lang === 'pt-BR' ? ' Você acertou' : 'You were correct'} <strong>{acertos}</strong>{lang === 'pt-BR' ? ' de' : ' of'}{" "}
+                            <strong>{totalRespondidas}</strong> {lang === 'pt-BR' ? 'perguntas.' : ' Questions'}
                         </p>
                         {acertos >= Math.ceil(totalRespondidas / 2) ? (
                             <p className={styles.mensagemBoa}>
@@ -127,11 +127,11 @@ function Quiz1() {
                             </p>
                         ) : (
                             <p className={styles.mensagemRuim}>
-                                Continue estudando. Você pode refazer o quiz.
+                                {lang === 'pt-BR' ? ' Continue estudando. Você pode refazer o quiz.' : ' Continue estudando. Você pode refazer o quiz.'}
                             </p>
                         )}
                         <button className={styles.botaoProxima} onClick={reiniciar}>
-                            Refazer Quiz
+                            {lang === 'pt-BR' ? ' Refazer Quiz' : ' retake quiz'}
                         </button>
                     </section>
                 </main>
@@ -161,19 +161,20 @@ function Quiz1() {
             <Header />
 
             <main className={styles.main}>
-                <div className={styles.voltar}>&lt; Estudo do livro</div>
+                <div className={styles.voltar}>&lt; 
+                    {lang === 'pt-BR' ? ' Estudo do livro' : ' study of book'}</div>
                 <h1 className={styles.titulo}>Quiz</h1>
-                <p className={styles.subtitulo}>• Linguagens, Códigos e suas tecnologias</p>
+                <p className={styles.subtitulo}>• {lang === 'pt-BR' ? ' Linguagens, Códigos e suas tecnologias' : ' Languages, Codes and their technologies'}</p>
 
                 <section className={styles.layout}>
                     <div className={styles.areaPergunta}>
                         <div className={styles.cardPergunta}>
                             <strong className={styles.questao}>
-                                Questão {perguntaAtual} de {TOTAL_QUESTOES}
+                               {lang === 'pt-BR' ? ' Questão' : ' Question'} {perguntaAtual} {lang === 'pt-BR' ? ' de' : ' of'} {TOTAL_QUESTOES}
                             </strong>
 
                             <button className={styles.botaoResultado}>
-                                Voltar aos meus resultados
+                                {lang === 'pt-BR' ? ' Voltar aos meus resultados' : ' Back to my results'}
                             </button>
 
                             <div className={styles.trecho}>
@@ -188,7 +189,7 @@ function Quiz1() {
                                         value={respostaDigitada}
                                         onChange={e => setRespostaDigitada(e.target.value)}
                                         onKeyDown={e => e.key === "Enter" && responder()}
-                                        placeholder="Digite sua resposta..."
+                                        placeholder={lang === 'pt-BR' ? ' Digite sua reposta' : ' Type your answer'}
                                         style={{
                                             width: "100%",
                                             padding: "12px 16px",
@@ -204,7 +205,7 @@ function Quiz1() {
                                         style={{ alignSelf: "flex-start" }}
                                         onClick={responder}
                                     >
-                                        Confirmar Resposta
+                                        {lang === 'pt-BR' ? ' Confirmar Resposta' : ' Confirm Answer'}
                                     </button>
                                 </div>
                             ) : (
@@ -221,7 +222,7 @@ function Quiz1() {
                                             {respostaAnterior?.correta ? "✓" : "✗"}
                                         </span>
                                         <span className={styles.textoAlternativa}>
-                                            Sua resposta: <strong>{respostaAnterior?.texto}</strong>
+                                            {lang === 'pt-BR' ? ' Sua resposta:' : ' Our Answer:'} <strong>{respostaAnterior?.texto}</strong>
                                         </span>
                                         <span className={respostaAnterior?.correta ? styles.statusCorreto : styles.statusErrado}>
                                             {respostaAnterior?.correta ? "Correta!" : "Incorreta"}
@@ -235,7 +236,7 @@ function Quiz1() {
                                         >
                                             <span className={styles.letra}>✓</span>
                                             <span className={styles.textoAlternativa}>
-                                                Resposta correta: <strong>{questao.respostaQuestao}</strong>
+                                                {lang === 'pt-BR' ? ' Resposta correta:' : ' Correct Answer:'} <strong>{questao.respostaQuestao}</strong>
                                             </span>
                                             <span className={styles.statusCorreto}>Gabarito</span>
                                         </div>
@@ -248,8 +249,8 @@ function Quiz1() {
                         <div className={styles.comentario}>
                             <div className={styles.professor}>
                                 <div>
-                                    <h3>Comentário do Professor</h3>
-                                    <span>Prof. Maria Helena | Leitura Brasileira</span>
+                                    <h3> {lang === 'pt-BR' ? ' Comentário do Professor' : ' Teacher s Commentary'}</h3>
+                                    <span> {lang === 'pt-BR' ? ' Prof. Maria Helena | Leitura Brasileira' : ' Prof. Maria Helena | Brazilian Reading'}</span>
                                 </div>
                             </div>
                             <p>
@@ -260,7 +261,7 @@ function Quiz1() {
                             <div className={styles.linhaComentario}></div>
                             <div className={styles.rodapeComentario}>
                                 <span>▣ Ver Vídeo Aula Relacionada</span>
-                                <span>Isso foi útil? 👍 👎</span>
+                                <span> {lang === 'pt-BR' ? ' Isso foi útil? 👍 👎' : ' Was this helpful? 👍 👎'}</span>
                             </div>
                         </div>
                     </div>
@@ -268,17 +269,17 @@ function Quiz1() {
                     {/* Barra lateral */}
                     <aside className={styles.lateral}>
                         <div className={styles.cardLateral}>
-                            <h3>Progresso</h3>
+                            <h3> {lang === 'pt-BR' ? ' Progresso' : ' Progress'}</h3>
                             <div className={styles.dica}>
-                                Questão {perguntaAtual} de {TOTAL_QUESTOES} — {acertos} acerto(s) até agora.
+                                {lang === 'pt-BR' ? ' Questão' : ' Question'} {perguntaAtual} {lang === 'pt-BR' ? ' de' : ' of'} {TOTAL_QUESTOES} — {acertos} {lang === 'pt-BR' ? ' acerto(s) até agora.' : ' correct so far.'}
                             </div>
                         </div>
                         <div className={styles.cardLateral}>
-                            <h3>Temas Relacionados</h3>
+                            <h3> {lang === 'pt-BR' ? ' Temas Relacionados' : ' Related Topics'}</h3>
                             <div className={styles.tags}>
-                                <span>Romantismo</span>
-                                <span>Romance Urbano</span>
-                                <span>Amor Idealizado</span>
+                                <span> {lang === 'pt-BR' ? ' Romantismo' : ' Romanticism'}</span>
+                                <span> {lang === 'pt-BR' ? ' Romance Urbano' : ' Urban Romance'}</span>
+                                <span> {lang === 'pt-BR' ? ' Amor Idealizado' : ' Idealized Love'}</span>
                             </div>
                         </div>
                     </aside>
@@ -291,7 +292,7 @@ function Quiz1() {
                         onClick={voltar}
                         disabled={perguntaAtual === 1}
                     >
-                        ← Anterior
+                        {lang === 'pt-BR' ? ' ← Anterior' : ' ← Previous'}
                     </button>
 
                     <div className={styles.bolinhas}>
