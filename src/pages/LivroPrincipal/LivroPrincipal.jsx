@@ -1,9 +1,11 @@
 import { useLocation, Link } from 'react-router-dom';
+import { LanguageProvider, useLang} from '../../contexts/LanguageContext';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import styles from './livroPrincipal.module.css';
 
 function LivroPrincipal() {
+    const { lang} = useLang();
     const { state } = useLocation();
     const livro = state?.livro;
 
@@ -16,7 +18,8 @@ function LivroPrincipal() {
                     <Link
                         to="/"
                         style={{ color: '#ff5a00', fontWeight: 'bold', textDecoration: 'none' }}>
-                        ← Voltar para a Home
+                        {lang === 'pt-BR' ? '← Voltar para a Home' : '← Come back to Home'}
+                        
                     </Link>
                 </main>
                 <Footer />
@@ -35,7 +38,7 @@ function LivroPrincipal() {
 
             <main className={styles.main_content}>
                 <Link to="/" className={styles.btn_voltar}>
-                    ← Voltar
+                    {lang === 'pt-BR' ? '← Voltar' : '← Go back'}
                 </Link>
 
                 <section className={styles.book_section}>
@@ -48,7 +51,7 @@ function LivroPrincipal() {
 
                         {livro.autor && (
                             <p className={styles.autor}>
-                                Por: <span>{livro.autor}</span>
+                                {lang === 'pt-BR' ? 'Por' : 'For'} <span>{livro.autor}</span>
                             </p>
                         )}
 
@@ -63,7 +66,7 @@ function LivroPrincipal() {
                         </p>
 
                         <button className={styles.btn_avaliar}>
-                            <span className={styles.seta}>→</span> Avaliar O Livro
+                            <span className={styles.seta}>→</span> {lang === 'pt-BR' ? 'Avaliar o livro' : 'Rate the book'}
                         </button>
                     </div>
                 </section>
@@ -73,7 +76,7 @@ function LivroPrincipal() {
                         <div className={styles.card_header}>
                             <span className={styles.marcador_laranja}></span>
                             <span className={styles.icon_resumo}>🔖</span>
-                            <h2>Resumo Completo</h2>
+                            <h2>{lang === 'pt-BR' ? 'Resumo completo' : 'Complete summary'}</h2>
                         </div>
 
                         <p className={styles.texto_resumo}>
@@ -86,7 +89,7 @@ function LivroPrincipal() {
                 <section className={styles.contexto_section}>
                     <div className={styles.contexto_info}>
                         <div className={styles.detalhe_linha_branca}></div>
-                        <h2>Contexto Histórico</h2>
+                        <h2>{lang === 'pt-BR' ? 'Contexto histórico' : 'Historical context'}</h2>
 
                         <p style={{ textAlign: 'justify', textJustify: 'inter-word' }}>
                             {dadosExtras.contextoHistorico}
@@ -97,7 +100,7 @@ function LivroPrincipal() {
                                 <div key={idx} className={styles.tag_card}>
                                     <span className={styles.tag_ano}>{tag}</span>
                                     <span className={styles.tag_legenda}>
-                                        Período de referência
+                                        {lang === 'pt-BR' ? 'Período de referência' : 'Reference period'}
                                     </span>
                                 </div>
                             ))}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { LanguageProvider, useLang} from '../../contexts/LanguageContext';
 import styles from "./questionarios.module.css";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
@@ -8,6 +9,7 @@ import Carregamento from "../../components/carregamento/carregamento";
 // Configuração de cada API — mesma do Home.jsx
 // Cada entrada representa um livro/quiz específico
 const APIS = [
+    
     {
         quizId: 2,
         titulo: 'Canção para Ninar Menino Grande',
@@ -59,6 +61,7 @@ function extrairCapa(json) {
 }
 
 function Questionarios() {
+    const { lang, } = useLang();
     const [livros, setLivros] = useState([]);
     const [carregando, setCarregando] = useState(true);
 
@@ -97,8 +100,10 @@ function Questionarios() {
 
             <main className={styles.content}>
                 <div className={styles.box}>
-                    <h1>Questionários</h1>
-                    <p>Escolha um livro para começar seu quiz e testar seus conhecimentos.</p>
+                    <h1>
+                        {lang === 'pt-BR' ? 'Questionários' : 'Questionnaires'}</h1>
+                    <p>
+                        {lang === 'pt-BR' ? 'Escolha um livro para começar seu quiz e testar seus conhecimentos.' : 'Choose a book to start your quiz and test your knowledge.'}</p>
 
                     {carregando ? (
                         <div style={{ display: "flex", justifyContent: "center", padding: "40px 0" }}>
@@ -126,18 +131,18 @@ function Questionarios() {
                                                 fontSize: "0.85rem",
                                             }}
                                         >
-                                            Sem capa
+                                            {lang === 'pt-BR' ? 'Sem capa' : 'No cover'}
                                         </div>
                                     )}
 
                                     <div className={styles.cardContent}>
                                         <h2>{livro.titulo}</h2>
-                                        <span>Progresso: {livro.progresso}</span>
+                                        <span>{lang === 'pt-BR' ? 'Progresso:' : 'Progress'} {livro.progresso}</span>
                                         <Link
                                             to={`/quiz/${livro.quizId}`}
                                             className={styles.botaoQuiz}
                                         >
-                                            Iniciar Quiz
+                                            {lang === 'pt-BR' ? 'Iniciar quiz' : 'start quiz'}
                                         </Link>
                                     </div>
                                 </div>

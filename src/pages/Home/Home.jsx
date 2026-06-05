@@ -106,9 +106,10 @@ function Home() {
 
             <section className={styles.hero}>
                 <img src={icones.url} alt="icones" />
-                <h1>{lang === 'pt-BR' ? 'estude' : 'Study'} <span>{lang === 'pt-BR' ? 'livros' : 'books'}</span> In a smart way</h1>
+                <h1>{lang === 'pt-BR' ? 'estude' : 'Study'} <span>{lang === 'pt-BR' ? 'livros' : 'books'}</span> 
+                {lang === 'pt-BR' ? ' de forma inteligente' : ' In a smart way'}</h1>
                 <p>{lang === 'pt-BR' ? 'Explore resumos, análises e conteúdos para estudar melhor' : 'Explore summaries, analyses, and learning materials to improve your study habits.'}</p>
-                <button>{lang === 'pt-BR' ? 'Começar agora' : 'start now'}</button>
+                <button className={styles.buttonstart}>{lang === 'pt-BR' ? 'Começar agora' : 'start now'}</button>
             </section>
 
             <section className={styles.booksSection}>

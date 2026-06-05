@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { LanguageProvider, useLang} from '../../contexts/LanguageContext';
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
 import styles from "./personagens.module.css";
@@ -8,8 +9,9 @@ const API_URL = "https://atividade-portugues-backend.onrender.com";
 const API_KEY = "chaveSecreta";
 
 function PaginaPersonagens() {
-  const [personagens, setPersonagens] = useState([]);
-  const [erro, setErro] = useState(null);
+    const { lang, } = useLang();
+    const [personagens, setPersonagens] = useState([]);
+    const [erro, setErro] = useState(null);
 
   useEffect(() => {
     async function carregarPersonagens() {
@@ -49,10 +51,12 @@ function PaginaPersonagens() {
                       className={styles.formas_decorativas}
                   />
                   <div className={styles.titulo_obra}>
-                      <h2>Canção para Ninar</h2>
-                      <h2 className={styles.destaque_laranja}>Menino Grande</h2>
+                      <h2>
+                        {lang === 'pt-BR' ? 'Canção para Ninar' : 'Lullaby'}</h2>
+                      <h2 className={styles.destaque_laranja}>
+                        {lang === 'pt-BR' ? 'Menino Grande' : 'for a Big Boy'}</h2>
                   </div>
-                  <h1>Personagens</h1>
+                  <h1>{lang === 'pt-BR' ? 'Personagens' : 'Characters'}</h1>
               </div>
 
               <div className={styles.grid_personagens}>
@@ -73,7 +77,7 @@ function PaginaPersonagens() {
                               <h3>{p.descricao}</h3>
 
                               <Link to={`/personagem/${p.id}`} className={styles.btn_ler_sobre}>
-                                  Ler Sobre <span className={styles.seta}>→</span>
+                                  {lang === 'pt-BR' ? 'Ler sobre' : 'Read about'} <span className={styles.seta}>→</span>
                               </Link>
                           </div>
                       </div>

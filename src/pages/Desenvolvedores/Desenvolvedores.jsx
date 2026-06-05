@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { LanguageProvider, useLang } from '../../contexts/LanguageContext';
 import Footer from '../../components/footer/footer';
 import Header from "../../components/header/header";
 import styles from './desenvolvedores.module.css';
@@ -15,6 +16,7 @@ const APIS_MEMBROS = [
 ];
 
 function Developers() {
+    const { lang, } = useLang();
     const [membros, setMembros] = useState([]);
     const [icones, setIcones] = useState(null);
     const [carregando, setCarregando] = useState(true);
@@ -78,12 +80,12 @@ function Developers() {
                 )}
 
                 <h2>
-                    sobre os <br />
-                    <span className={styles.verde}>integrantes</span>
+                    {lang === 'pt-BR' ? 'Sobre os' : 'About the'} <br />
+                    <span className={styles.verde}>{lang === 'pt-BR' ? 'Integrantes' : 'Integrants'}</span>
                 </h2>
 
                 <p>
-                    Conheça a equipe responsável pelo desenvolvimento da Bookly
+                    {lang === 'pt-BR' ? 'Conheça a equipe responsável pelo desenvolvimento da Bookly' : 'Meet the team behind development Bookly'}
                 </p>
             </section>
 
