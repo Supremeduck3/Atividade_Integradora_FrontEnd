@@ -51,7 +51,7 @@ function DetalhePersonagem() {
                         <img src={personagem.foto} alt={personagem.descricao} />
                     </div>
                     <div className={styles.detalhe_info}>
-                        <span className={styles.obra_tag}>{lang === 'pt-BR' ? 'Canção para Ninar Menino Grande' : 'Lullaby for a Big Boy'}</span>
+                        <span className={styles.obra_tag}>Canção para Ninar Menino Grande</span>
                         <h1>{personagem.descricao}</h1>
                     </div>
                 </div>

@@ -52,9 +52,9 @@ function PaginaPersonagens() {
                   />
                   <div className={styles.titulo_obra}>
                       <h2>
-                        {lang === 'pt-BR' ? 'Canção para Ninar' : 'Lullaby'}</h2>
+                        Canção para Ninar</h2>
                       <h2 className={styles.destaque_laranja}>
-                        {lang === 'pt-BR' ? 'Menino Grande' : 'for a Big Boy'}</h2>
+                        Menino Grande</h2>
                   </div>
                   <h1>{lang === 'pt-BR' ? 'Personagens' : 'Characters'}</h1>
               </div>
