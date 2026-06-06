@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { LanguageProvider, useLang} from '../../contexts/LanguageContext';
+import { useLang } from '../../contexts/LanguageContext'; // Removido o LanguageProvider daqui, deixa ele só no main/index
 
 import styles from './home.module.css';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import Carregamento from '../../components/carregamento/carregamento';
-
 
 function extrairPrimeiroLivro(json) {
     if (Array.isArray(json) && json.length > 0) return json[0];
@@ -15,11 +14,13 @@ function extrairPrimeiroLivro(json) {
     if (json?.titulo || json?.capa) return json;
     return null;
 }
+
 const ICONES_URL = 'https://atividade-portugues-backend.onrender.com/api/upload/19/imagem';
 const ICONES_API_KEY = 'chaveSecreta';
 
 function Home() {
-    const { lang, } = useLang();
+    // 1. Pegamos o idioma global que muda quando o botão é clicado
+    const { lang } = useLang(); 
     const [livros, setLivros] = useState([]);
     const [erro, setErro] = useState(null);
     const [icones, setIcones] = useState(null);
@@ -28,31 +29,34 @@ function Home() {
     useEffect(() => {
         async function carregarLivros() {
             try {
+                // Sempre que começar a carregar um novo idioma, mostra a tela de carregamento
+                setCarregando(true); 
+
+                // 2. Passamos o `lang` atual na URL de cada requisição do back-end
                 const respostas = await Promise.all([
-                    fetch('https://atividade-portugues-backend.onrender.com/api/livro', {
+                    fetch(`https://atividade-portugues-backend.onrender.com/api/livro?lang=${lang}`, {
                         headers: { 'x-api-key': 'chaveSecreta' },
                     }),
-                    fetch('https://ratsjs.onrender.com/api/livros', {
+                    fetch(`https://ratsjs.onrender.com/api/livros?lang=${lang}`, {
                         headers: {
-                            'x-api-key':
-                                'Fq0CotClRneRPJAeCakJsrSwGyVCJU58tQrPWYgLCK3ei9HT-Ygajl2KXCLiZTPO',
+                            'x-api-key': 'Fq0CotClRneRPJAeCakJsrSwGyVCJU58tQrPWYgLCK3ei9HT-Ygajl2KXCLiZTPO',
                         },
                     }),
-                    fetch('https://clubelivro-backend.onrender.com/api/livros', {
+                    fetch(`https://clubelivro-backend.onrender.com/api/livros?lang=${lang}`, {
                         headers: { 'x-api-key': 'entreLinhas123' },
                     }),
-                    fetch('https://olhosdagua.onrender.com/api/livro', {
+                    fetch(`https://olhosdagua.onrender.com/api/livro?lang=${lang}`, {
                         headers: {
-                            'x-api-key':
-                                '6uztY7YTa2Dcgnf2ovDC2Kqmwvq2PdTMOlkx1bLwmhO2HQpQoXHMhk1cBcIjzHj9lztTbW7I83UZ91C8uSos-n8kOx3UuqU8n0BIDVm1venccSH0QVyNYKkLTZboaUpd',
+                            'x-api-key': '6uztY7YTa2Dcgnf2ovDC2Kqmwvq2PdTMOlkx1bLwmhO2HQpQoXHMhk1cBcIjzHj9lztTbW7I83UZ91C8uSos-n8kOx3UuqU8n0BIDVm1venccSH0QVyNYKkLTZboaUpd',
                         },
                     }),
-                    fetch('https://devstones-backend.onrender.com/api/livro/', {
+                    fetch(`https://devstones-backend.onrender.com/api/livro/?lang=${lang}`, {
                         headers: {
                             'x-api-key': ' livr0',
                         },
                     }),
                 ]);
+
                 if (ICONES_URL) {
                     const respostaIcones = await fetch(ICONES_URL, {
                         headers: { 'x-api-key': ICONES_API_KEY },
@@ -73,7 +77,8 @@ function Home() {
         }
 
         carregarLivros();
-    }, []);
+    // 3. ADICIONADO AQUI: Sempre que o 'lang' mudar lá no contexto, esse useEffect roda de novo!
+    }, [lang]); 
 
     if (carregando) {
         return (
@@ -99,17 +104,25 @@ function Home() {
         );
     }
 
-
     return (
         <div className={styles.container}>
             <Header />
 
             <section className={styles.hero}>
-                <img src={icones.url} alt="icones" />
-                <h1>{lang === 'pt-BR' ? 'estude' : 'Study'} <span>{lang === 'pt-BR' ? 'livros' : 'books'}</span> 
-                {lang === 'pt-BR' ? ' de forma inteligente' : ' In a smart way'}</h1>
-                <p>{lang === 'pt-BR' ? 'Explore resumos, análises e conteúdos para estudar melhor' : 'Explore summaries, analyses, and learning materials to improve your study habits.'}</p>
-                <button className={styles.buttonstart}>{lang === 'pt-BR' ? 'Começar agora' : 'start now'}</button>
+                {icones && <img src={icones.url} alt="icones" />}
+                <h1>
+                    {lang === 'pt-BR' ? 'estude' : 'Study'}{' '}
+                    <span>{lang === 'pt-BR' ? 'livros' : 'books'}</span>{' '}
+                    {lang === 'pt-BR' ? ' de forma inteligente' : ' In a smart way'}
+                </h1>
+                <p>
+                    {lang === 'pt-BR'
+                        ? 'Explore resumos, análises e conteúdos para estudar melhor'
+                        : 'Explore summaries, analyses, and learning materials to improve your study habits.'}
+                </p>
+                <button className={styles.buttonstart}>
+                    {lang === 'pt-BR' ? 'Começar agora' : 'start now'}
+                </button>
             </section>
 
             <section className={styles.booksSection}>
@@ -124,7 +137,8 @@ function Home() {
                             className={styles.card}
                             style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}
                         >
-                            <img src={livro.capa ?  livro.capa : "vazio"}  alt={livro.titulo} />
+                            <img src={livro.capa ? livro.capa : "vazio"} alt={livro.titulo} />
+                            {/* O título e o autor vão mudar sozinhos, porque o back-end mandará os dados na língua certa */}
                             <h3>{livro.titulo}</h3>
                             <p>{livro.autor}</p>
                         </Link>
