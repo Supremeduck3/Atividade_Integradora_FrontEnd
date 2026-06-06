@@ -7,12 +7,15 @@ import styles from "./quiz1.module.css";
 
 const TOTAL_QUESTOES = 5;
 
-const QUIZ_APIS = {
-    2: { baseUrl: 'https://atividade-portugues-backend.onrender.com', apiKey: 'chaveSecreta',         firstId: 5 },
-    3: { baseUrl: 'https://clubelivro-backend.onrender.com',          apiKey: 'entreLinhas123',        firstId: 11 },
-    4: { baseUrl: 'https://ratsjs.onrender.com',                      apiKey: 'Fq0CotClRneRPJAeCakJsrSwGyVCJU58tQrPWYgLCK3ei9HT-Ygajl2KXCLiZTPO', firstId: 16 },
-    5: { baseUrl: 'https://olhosdagua.onrender.com',                  apiKey: '6uztY7YTa2Dcgnf2ovDC2Kqmwvq2PdTMOlkx1bLwmhO2HQpQoXHMhk1cBcIjzHj9lztTbW7I83UZ91C8uSos-n8kOx3UuqU8n0BIDVm1venccSH0QVyNYKkLTZboaUpd', firstId: 21 },
-    6: { baseUrl: 'https://devstones-backend.onrender.com',           apiKey: 'livr0',                firstId: 1 },
+const BASE_URL = 'https://atividade-portugues-backend.onrender.com';
+const API_KEY = 'chaveSecreta';
+
+const QUIZ_CONFIG = {
+    2: { firstId: 5 },
+    3: { firstId: 10 },
+    4: { firstId: 15 },
+    5: { firstId: 20 },
+    6: { firstId: 24 },
 };
 
 function Quiz1() {
@@ -37,25 +40,23 @@ function Quiz1() {
             setRespondida(respostas[perguntaAtual] !== undefined);
             setRespostaDigitada(respostas[perguntaAtual]?.texto ?? "");
 
-            // Bug 2 fix: usa o config correto para o livro
-            const apiConfig = QUIZ_APIS[livroId];
-            if (!apiConfig) {
+            const config = QUIZ_CONFIG[livroId];
+            if (!config) {
                 setErro(`Livro ${livroId} não encontrado.`);
                 setCarregando(false);
                 return;
             }
 
             try {
-                // Usa o firstId do config para calcular o ID real no banco
-                const questionId = apiConfig.firstId + perguntaAtual - 1;
-                const api = await fetch(
-                    `${apiConfig.baseUrl}/api/quiz/${questionId}`,
-                    { method: "GET", headers: { "x-api-key": apiConfig.apiKey } }
+                const questionId = config.firstId + perguntaAtual - 1;
+                const response = await fetch(
+                    `${BASE_URL}/api/quiz/${questionId}`,
+                    { method: "GET", headers: { "x-api-key": API_KEY } }
                 );
 
-                if (!api.ok) throw new Error(`Erro na API: ${api.status}`);
+                if (!response.ok) throw new Error(`Erro na API: ${response.status}`);
 
-                const json = await api.json();
+                const json = await response.json();
                 const dados = json.data ?? json;
                 setQuestao(dados);
             } catch (e) {
@@ -68,7 +69,6 @@ function Quiz1() {
         carregarQuestao();
     }, [perguntaAtual, livroId]);
 
-    // Bug 3 fix: seleciona campo correto pelo idioma
     function getTextoQuestao() {
         if (!questao) return "";
         return lang === 'pt-BR'
@@ -123,12 +123,6 @@ function Quiz1() {
         }
     }
 
-    function voltar() {
-        if (perguntaAtual > 1) {
-            setPerguntaAtual(perguntaAtual - 1);
-        }
-    }
-
     function reiniciar() {
         setPerguntaAtual(1);
         setRespostas({});
@@ -140,14 +134,12 @@ function Quiz1() {
     const acertos = Object.values(respostas).filter(r => r.correta).length;
     const totalRespondidas = Object.keys(respostas).length;
 
-    // ── Tela de resultado final ──────────────────────────────────────
     if (finalizado) {
         return (
             <div className={styles.container}>
                 <Header />
                 <main className={styles.main}>
                     <section className={styles.resultadoFinal}>
-                        {/* Bug 5 fix: todos os textos da tela final respeitam o idioma */}
                         <h1>{lang === 'pt-BR' ? 'Resultado Final' : 'Final Result'}</h1>
                         <h2>Quiz {id ? `— Livro ${id}` : ""}</h2>
                         <p>
@@ -180,7 +172,6 @@ function Quiz1() {
         );
     }
 
-    // ── Loading / Erro ───────────────────────────────────────────────
     if (carregando || erro || !questao) {
         return (
             <div className={styles.container}>
@@ -199,7 +190,6 @@ function Quiz1() {
     const textoQuestao = getTextoQuestao();
     const respostaCorreta = getRespostaCorreta();
 
-    // ── Quiz ─────────────────────────────────────────────────────────
     return (
         <div className={styles.container}>
             <Header />
@@ -227,7 +217,6 @@ function Quiz1() {
                                 {lang === 'pt-BR' ? 'Voltar aos meus resultados' : 'Back to my results'}
                             </button>
 
-                            {/* Bug 3 fix: exibe texto da questão no idioma correto */}
                             <div className={styles.trecho}>
                                 {textoQuestao}
                             </div>
@@ -282,7 +271,6 @@ function Quiz1() {
                                         </span>
                                     </div>
 
-                                    {/* Bug 3 fix: mostra resposta correta no idioma certo */}
                                     {!respostaAnterior?.correta && (
                                         <div
                                             className={`${styles.alternativa} ${styles.correta}`}
@@ -302,7 +290,6 @@ function Quiz1() {
                             )}
                         </div>
 
-                        {/* Comentário do professor */}
                         <div className={styles.comentario}>
                             <div className={styles.professor}>
                                 <div>
@@ -317,74 +304,22 @@ function Quiz1() {
                             <p>
                                 {respondida
                                     ? lang === 'pt-BR'
-                                        ? `Olá, futuro universitário! A resposta esperada era "${respostaCorreta}".`
-                                        : `Hello, future university student! The expected answer was "${respostaCorreta}".`
+                                        ? 'Análise da resposta concluída.'
+                                        : 'Answer analysis completed.'
                                     : lang === 'pt-BR'
-                                        ? "Olá, futuro universitário! Responda a questão para visualizar o comentário."
-                                        : "Hello, future university student! Answer the question to see the commentary."}
+                                        ? 'Aguardando sua resposta para análise.'
+                                        : 'Waiting for your answer for analysis.'}
                             </p>
-                            <div className={styles.linhaComentario}></div>
-                            <div className={styles.rodapeComentario}>
-                                <span>
-                                    ▣ {lang === 'pt-BR' ? 'Ver Vídeo Aula Relacionada' : 'View Related Video Lesson'}
-                                </span>
-                                <span>
-                                    {lang === 'pt-BR' ? 'Isso foi útil? 👍 👎' : 'Was this helpful? 👍 👎'}
-                                </span>
-                            </div>
                         </div>
                     </div>
 
-                    {/* Barra lateral */}
-                    <aside className={styles.lateral}>
-                        <div className={styles.cardLateral}>
-                            <h3>{lang === 'pt-BR' ? 'Progresso' : 'Progress'}</h3>
-                            <div className={styles.dica}>
-                                {lang === 'pt-BR' ? 'Questão' : 'Question'} {perguntaAtual}{' '}
-                                {lang === 'pt-BR' ? 'de' : 'of'} {TOTAL_QUESTOES} —{' '}
-                                {acertos} {lang === 'pt-BR' ? 'acerto(s) até agora.' : 'correct so far.'}
-                            </div>
-                        </div>
-                        <div className={styles.cardLateral}>
-                            <h3>{lang === 'pt-BR' ? 'Temas Relacionados' : 'Related Topics'}</h3>
-                            <div className={styles.tags}>
-                                <span>{lang === 'pt-BR' ? 'Romantismo' : 'Romanticism'}</span>
-                                <span>{lang === 'pt-BR' ? 'Romance Urbano' : 'Urban Romance'}</span>
-                                <span>{lang === 'pt-BR' ? 'Amor Idealizado' : 'Idealized Love'}</span>
-                            </div>
+                    <aside className={styles.progresso}>
+                        <div className={styles.botoesNavegacao}>
+                            <button className={styles.botaoProxima} onClick={avancar}>
+                                {lang === 'pt-BR' ? 'Próxima' : 'Next'}
+                            </button>
                         </div>
                     </aside>
-                </section>
-
-                {/* Navegação */}
-                <section className={styles.navegacao}>
-                    <button
-                        className={styles.botaoAnterior}
-                        onClick={voltar}
-                        disabled={perguntaAtual === 1}
-                    >
-                        {lang === 'pt-BR' ? '← Anterior' : '← Previous'}
-                    </button>
-
-                    {/* Bug 6 fix: bolinhas mostram acertou/errou para questões já respondidas */}
-                    <div className={styles.bolinhas}>
-                        {Array.from({ length: TOTAL_QUESTOES }, (_, i) => {
-                            const num = i + 1;
-                            const isAtual = num === perguntaAtual;
-                            const resposta = respostas[num];
-                            let cls = "";
-                            if (isAtual) cls = styles.ativa;
-                            else if (resposta?.correta) cls = styles.acertou;
-                            else if (resposta) cls = styles.errou;
-                            return <span key={i} className={cls}></span>;
-                        })}
-                    </div>
-
-                    <button className={styles.botaoProxima} onClick={avancar}>
-                        {perguntaAtual === TOTAL_QUESTOES
-                            ? (lang === 'pt-BR' ? 'Finalizar →' : 'Finish →')
-                            : (lang === 'pt-BR' ? 'Próxima →' : 'Next →')}
-                    </button>
                 </section>
             </main>
 
