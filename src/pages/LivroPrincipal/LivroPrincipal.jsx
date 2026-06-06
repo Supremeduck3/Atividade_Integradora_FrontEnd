@@ -1,11 +1,11 @@
 import { useLocation, Link } from 'react-router-dom';
-import { LanguageProvider, useLang} from '../../contexts/LanguageContext';
+import { LanguageProvider, useLang } from '../../contexts/LanguageContext';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import styles from './livroPrincipal.module.css';
 
 function LivroPrincipal() {
-    const { lang} = useLang();
+    const { lang } = useLang();
     const { state } = useLocation();
     const livro = state?.livro;
 
@@ -19,7 +19,7 @@ function LivroPrincipal() {
                         to="/"
                         style={{ color: '#ff5a00', fontWeight: 'bold', textDecoration: 'none' }}>
                         {lang === 'pt-BR' ? '← Voltar para a Home' : '← Come back to Home'}
-                        
+
                     </Link>
                 </main>
                 <Footer />
@@ -27,9 +27,15 @@ function LivroPrincipal() {
         );
     }
 
+    // {lang === 'pt-BR' ? livro.titulo : livro.titulo_en}
+
     const dadosExtras = {
-        contextoHistorico: livro.contexto ?? 'Contexto histórico não informado para este livro.',
-        tagsPeriodo: livro.anoPublicacao ? [`Ano ${livro.anoPublicacao}`] : ['Não informado'],
+        contextoHistorico: lang === 'pt-BR'
+            ? (livro.contexto ?? 'Contexto histórico não informado para este livro.')
+            : (livro.contexto_en ?? 'Historical context not provided for this book.'),
+        tagsPeriodo: livro.anoPublicacao
+            ? [`${lang === 'pt-BR' ? 'Ano' : 'Year'} ${livro.anoPublicacao}`]
+            : [lang === 'pt-BR' ? 'Não informado' : 'Not informed'],
     };
 
     return (
@@ -51,7 +57,7 @@ function LivroPrincipal() {
 
                         {livro.autor && (
                             <p className={styles.autor}>
-                                {lang === 'pt-BR' ? 'Por' : 'For'} <span>{livro.autor}</span>
+                                {lang === 'pt-BR' ? 'Por' : 'By'} <span>{livro.autor}</span>
                             </p>
                         )}
 
@@ -60,9 +66,14 @@ function LivroPrincipal() {
                         </div>
 
                         <p className={styles.sinopse_curta}>
-                            {livro.resumo
-                                ? `${livro.resumo.substring(0, 180)}...`
-                                : 'Sem resumo disponível.'}
+                            {lang === 'pt-BR'
+                                ? (livro.resumo
+                                    ? `${livro.resumo.substring(0, 180)}...`
+                                    : 'Sem resumo disponível.')
+                                : (livro.resumo_en
+                                    ? `${livro.resumo_en.substring(0, 180)}...`
+                                    : 'No summary available.')}
+
                         </p>
 
                         <button className={styles.btn_avaliar}>
@@ -80,9 +91,10 @@ function LivroPrincipal() {
                         </div>
 
                         <p className={styles.texto_resumo}>
-                            {livro.resumo ?? 'Nenhum resumo detalhado disponível.'}
+                            {lang === 'pt-BR'
+                                ? (livro.resumo ?? 'Nenhum resumo detalhado disponível.')
+                                : (livro.resumo_en ?? 'No detailed summary available.')}
                         </p>
-
                     </div>
                 </section>
 
