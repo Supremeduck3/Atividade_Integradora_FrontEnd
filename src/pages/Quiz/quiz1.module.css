@@ -111,7 +111,7 @@
     border-radius: 7px;
     padding: 12px;
     display: grid;
-    grid-template-columns: 28px 1rf 115px;
+    grid-template-columns: 28px 1fr 115px;
     align-items: center;
     gap: 12px;
     text-align: left;
@@ -343,7 +343,15 @@
     display: block;
 }
 .bolinhas .ativa {
+    background-color: #4f8cff;
+    transform: scale(1.3);
+}
+/* Bug 6 fix: classes para questões já respondidas */
+.bolinhas .acertou {
     background-color: #00a86b;
+}
+.bolinhas .errou {
+    background-color: #ff5a1f;
 }
 .resultadoFinal {
     max-width: 620px;
