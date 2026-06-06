@@ -32,9 +32,9 @@ function PaginaPersonagens() {
         console.error(e);
       }
     }
-
     carregarPersonagens();
   }, []);
+
 
   if (erro) return <div>{erro}</div>;
   if (!personagens.length) return ;
