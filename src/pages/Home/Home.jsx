@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useLang } from '../../contexts/LanguageContext';
 import styles from './home.module.css';
 import Header from '../../components/header/header';
@@ -165,9 +165,11 @@ function Home() {
                         ? 'Explore resumos, análises e conteúdos para estudar melhor'
                         : 'Explore summaries, analyses, and learning materials to improve your study habits.'}
                 </p>
-                <button className={styles.buttonstart}>
+                <NavLink
+                    to="/questionarios"                
+                className={styles.buttonstart}>
                     {lang === 'pt-BR' ? 'Começar agora' : 'start now'}
-                </button>
+                </NavLink>
             </section>
 
             <section className={styles.booksSection}>
