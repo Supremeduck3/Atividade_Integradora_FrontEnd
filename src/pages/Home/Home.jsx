@@ -156,7 +156,7 @@ function Home() {
             <section className={styles.hero}>
                 {icones && <img src={icones.url} alt="icones" />}
                 <h1>
-                    {lang === 'pt-BR' ? 'estude' : 'Study'}{' '}
+                    {lang === 'pt-BR' ? 'Estude' : 'Study'}{' '}
                     <span>{lang === 'pt-BR' ? 'livros' : 'books'}</span>{' '}
                     {lang === 'pt-BR' ? ' de forma inteligente' : ' In a smart way'}
                 </h1>

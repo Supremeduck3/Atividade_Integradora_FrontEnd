@@ -29,7 +29,7 @@ export default function Header() {
                     className={({ isActive }) =>
                         isActive ? styles['pagina_ativa'] : styles['pagina_desativa']
                     }>
-                    {lang === 'pt-BR' ? 'equipe' : 'team'}
+                    {lang === 'pt-BR' ? 'Equipe' : 'Team'}
                 </NavLink>
 
                 <NavLink to="/login" className={logado ? styles['logado'] : styles['naoLogado']}>
@@ -48,7 +48,7 @@ export default function Header() {
                     className={({ isActive }) =>
                         isActive ? styles['pagina_ativa'] : styles['pagina_desativa']
                     }>
-                    {lang === 'pt-BR' ? 'personagens' : 'characters'}
+                    {lang === 'pt-BR' ? 'Personagens' : 'Characters'}
                 </NavLink>
 
                 <NavLink
@@ -56,7 +56,7 @@ export default function Header() {
                     className={({ isActive }) =>
                         isActive ? styles['pagina_ativa'] : styles['pagina_desativa']
                     }>
-                    {lang === 'pt-BR' ? 'sobre' : 'about'} 
+                    {lang === 'pt-BR' ? 'Sobre' : 'About'} 
                 </NavLink>
                 <NavLink to="/login" className={styles.signin_btn}>
                     Login
