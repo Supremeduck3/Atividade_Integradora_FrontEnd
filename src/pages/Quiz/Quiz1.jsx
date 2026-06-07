@@ -195,9 +195,9 @@ function Quiz1() {
             <Header />
 
             <main className={styles.main}>
-                <div className={styles.voltar}>
+                <link to="/quiz" className={styles.voltar}>
                     &lt; {lang === 'pt-BR' ? 'Estudo do livro' : 'Study of the book'}
-                </div>
+                </link>
                 <h1 className={styles.titulo}>Quiz</h1>
                 <p className={styles.subtitulo}>
                     • {lang === 'pt-BR'
