@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import { useLang } from '../../contexts/LanguageContext';
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
@@ -195,9 +195,9 @@ function Quiz1() {
             <Header />
 
             <main className={styles.main}>
-                <link to="/quiz" className={styles.voltar}>
+                <Link to="/questionarios" className={styles.voltar}>
                     &lt; {lang === 'pt-BR' ? 'Estudo do livro' : 'Study of the book'}
-                </link>
+                </Link>
                 <h1 className={styles.titulo}>Quiz</h1>
                 <p className={styles.subtitulo}>
                     • {lang === 'pt-BR'
