@@ -10,6 +10,7 @@ import Questionarios from './pages/Questionarios/Questionarios';
 import Quiz1 from './pages/Quiz/Quiz1';
 import Sobre from './pages/Sobre/Sobre';
 import LivroPrincipal from './pages/LivroPrincipal/LivroPrincipal';
+import Videos from './pages/VideoAula/VideoAula';
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/quiz/:id" element={<Quiz1 />} />
                 <Route path="/sobre" element={<Sobre />} />
                 <Route path="*" element={<NotFound />} />
+                <Route path="/videoAula" element={<Videos />}></Route>
             </Routes>
         </BrowserRouter>
     );

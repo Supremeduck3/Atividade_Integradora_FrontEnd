@@ -58,6 +58,14 @@ export default function Header() {
                     }>
                     {lang === 'pt-BR' ? 'Sobre' : 'About'} 
                 </NavLink>
+
+                <NavLink
+                    to="/videoAula"
+                    className={({ isActive }) =>
+                        isActive ? styles['pagina_ativa'] : styles['pagina_desativa']
+                    }>
+                    {lang === 'pt-BR' ? 'Video Aula' : 'Video class'} 
+                </NavLink>
                 <NavLink to="/login" className={styles.signin_btn}>
                     Login
                 </NavLink>
