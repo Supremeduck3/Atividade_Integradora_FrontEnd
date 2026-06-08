@@ -45,11 +45,6 @@ function PaginaPersonagens() {
 
           <main className={styles.conteudo_personagens}>
               <div className={styles.banner_personagens}>
-                  <img
-                      src="/img/icones.png"
-                      alt="Decorativo"
-                      className={styles.formas_decorativas}
-                  />
                   <div className={styles.titulo_obra}>
                       <h2>
                         Canção para Ninar</h2>
