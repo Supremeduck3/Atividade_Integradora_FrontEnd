@@ -78,7 +78,6 @@ function Developers() {
                 {icones && (
                     <img src={icones.url} alt='icones decorativos' />
                 )}
-
                 <h2>
                     {lang === 'pt-BR' ? 'Sobre os' : 'About the'} <br />
                     <span className={styles.verde}>{lang === 'pt-BR' ? 'Integrantes' : 'Integrants'}</span>
